@@ -1,0 +1,1294 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bộ lệnh chuẩn hóa bài viết — Kế Toán Diệu Tâm</title>
+<meta name="description" content="Trang hướng dẫn 5 bước để nhân viên sao chép lệnh cho AI chuẩn hóa bài viết theo hệ thống trình bày Kế Toán Diệu Tâm.">
+<style>
+:root{--bg:#f5f6f3;--card:#fff;--text:#202923;--muted:#667069;--green:#176b4d;--green2:#0f5138;--greenSoft:#eef7f2;--gold:#d0a13a;--goldSoft:#fff8e7;--red:#b94b38;--redSoft:#fff3ef;--border:#dce3de;--code:#f7f9f7;--shadow:0 8px 26px rgba(30,44,36,.06);--radius:12px;--preview:190px}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,"Segoe UI",sans-serif;line-height:1.55}.page{width:min(980px,calc(100% - 28px));margin:auto;padding:28px 0 64px}header{padding:22px 24px;background:#fff;border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}h1{margin:0;color:var(--green2);font-size:30px;line-height:1.2}header p{margin:8px 0 0;color:var(--muted)}.top-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px}.btn,.copy,.toggle{border:1px solid var(--border);border-radius:8px;background:#fff;color:var(--green2);font:inherit;font-weight:700;cursor:pointer}.btn{display:inline-flex;align-items:center;padding:9px 12px;text-decoration:none}.btn.primary{color:#fff;background:var(--green);border-color:var(--green)}.guide{margin-top:18px;padding:20px 22px;background:#fff;border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}.guide h2{margin:0 0 12px;font-size:20px}.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.step{padding:11px 10px;background:#f8faf8;border:1px solid var(--border);border-radius:9px;text-align:center;font-size:12px}.step strong{display:block;color:var(--green2);font-size:13px}.important{margin-top:14px;padding:12px 14px;border-left:4px solid var(--gold);background:var(--goldSoft);border-radius:8px;color:#5f4a1f;font-size:14px}.decision{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:13px}.decision>div{padding:12px;border:1px solid var(--border);border-radius:9px;font-size:13px}.ok{background:var(--greenSoft)}.review{background:var(--goldSoft)}.fail{background:var(--redSoft)}.decision strong{display:block;margin-bottom:4px}.loop{margin-top:10px;padding:11px 13px;background:#f8faf8;border:1px solid var(--border);border-radius:8px;font-size:13px}.prompt-list-title{margin:28px 0 10px}.prompt-list-title h2{margin:0;font-size:22px}.prompt-list-title p{margin:4px 0 0;color:var(--muted);font-size:14px}.card{margin:12px 0;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}.card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;padding:16px 17px;border-bottom:1px solid var(--border)}.card-head small{display:block;color:var(--green);font-weight:800}.card-head h3{margin:3px 0 0;font-size:18px}.card-head p{margin:5px 0 0;color:var(--muted);font-size:13px}.copy{flex:none;padding:8px 10px}.copy.done{background:var(--greenSoft);border-color:#9dceb9}.prompt-wrap{position:relative}.prompt{margin:0;padding:17px 18px;max-height:var(--preview);overflow:hidden;white-space:pre-wrap;overflow-wrap:anywhere;background:var(--code);color:#29352e;font:12.6px/1.62 Consolas,"Courier New",monospace;user-select:text}.card.open .prompt{max-height:none}.fade{position:absolute;left:0;right:0;bottom:0;height:70px;background:linear-gradient(transparent,var(--code) 85%);pointer-events:none}.card.open .fade{display:none}.card-foot{display:flex;justify-content:flex-end;padding:8px 13px;border-top:1px solid var(--border)}.toggle{border:0;padding:5px;background:transparent}.note{margin-top:18px;padding:13px 15px;background:#fff;border:1px solid var(--border);border-radius:9px;color:var(--muted);font-size:13px}.note strong{color:var(--text)}footer{margin-top:28px;text-align:center;color:var(--muted);font-size:12px}@media(max-width:760px){.steps,.decision{grid-template-columns:1fr}.step{text-align:left}.card-head{flex-direction:column}.copy{width:100%}.page{width:min(100% - 18px,980px);padding-top:16px}h1{font-size:25px}}
+</style>
+</head>
+<body>
+<main class="page">
+<header>
+<h1>Bộ lệnh chuẩn hóa bài viết</h1>
+<p>Làm lần lượt từ Bước 1 đến Bước 4. Chỉ dùng Bước 5 khi Bước 4 báo có lỗi trong phần chuyển đổi cần sửa.</p>
+<div class="top-actions">
+<a class="btn primary" href="./SKILL.md" download>Tải file hướng dẫn cho AI (SKILL.md)</a>
+<button class="btn" type="button" data-open-all>Mở tất cả lệnh</button>
+<button class="btn" type="button" data-close-all>Thu gọn tất cả</button>
+</div>
+</header>
+<section class="guide">
+<h2>Cách dùng</h2>
+<div class="steps">
+<div class="step"><strong>Bước 1</strong>Đọc bài gốc và lập danh sách những phần cần giữ đúng ý nghĩa.</div>
+<div class="step"><strong>Bước 2</strong>Gửi file hướng dẫn cho AI và yêu cầu AI lập kế hoạch chuyển đổi.</div>
+<div class="step"><strong>Bước 3</strong>Yêu cầu AI chuyển bài sang HTML chuẩn.</div>
+<div class="step"><strong>Bước 4</strong>Yêu cầu AI kiểm tra lại toàn bộ bài đã chuyển.</div>
+<div class="step"><strong>Bước 5</strong>Chỉ dùng khi Bước 4 phát hiện lỗi có thể sửa.</div>
+</div>
+<div class="important"><strong>Rất quan trọng:</strong> ở Bước 1 chưa gửi file hướng dẫn cho AI. Mục đích là để AI quan sát bài gốc độc lập. Từ v1.1.3, ngoài positional semantics và coherent formal-form scope, AI phải phân biệt rõ <strong>editorial material ABOUT một form/document</strong> với <strong>printed/official content OF chính form/document đó</strong>; đồng thời inventory source-backed formal alignment như form title căn giữa hoặc unit/date line căn phải khi vị trí có meaning. Table nằm trong official document vẫn giữ semantic class cũ; CSS tự chuyển sang formal-neutral document presentation.</div>
+<h2 style="margin-top:20px">Sau Bước 4 phải làm gì?</h2>
+<div class="decision">
+<div class="ok"><strong>Nếu AI báo: PASS (Đạt)</strong>Dừng. Dùng bản HTML mới nhất. Không cần Bước 5.</div>
+<div class="review"><strong>Nếu AI báo: PASS WITH NEEDS REVIEW</strong>Nghĩa là bài đã chuyển đúng nhưng còn việc cần người kiểm tra, ví dụ đường dẫn cũ, hình ảnh, thông tin pháp lý có vẻ cũ hoặc boundary/alignment thật sự chưa đủ evidence. Không dùng Bước 5 chỉ để ép thành “Đạt”.</div>
+<div class="fail"><strong>Nếu AI báo: FAIL — FIX BEFORE PUBLISH</strong>Nghĩa là phần chuyển đổi còn lỗi như mất nội dung, sai tiêu đề, sai danh sách, sai bảng, sai ô, mất quan hệ/grouping, sai formal-form boundary hoặc làm mất source-backed formal alignment có nghĩa. Lúc này dùng Bước 5.</div>
+</div>
+<div class="loop"><strong>Sau Bước 5:</strong> AI sẽ xuất lại một bản HTML mới. Sau đó <strong>quay lại dùng Bước 4</strong> để kiểm tra toàn bộ bản mới. Nếu vẫn chưa đạt thì có thể Bước 5 → Bước 4 thêm lần nữa. Nếu cùng một lỗi lặp lại khoảng 2–3 lần, dừng và chuyển cho người kiểm tra thủ công.</div>
+</section>
+<div class="prompt-list-title"><h2>Các lệnh để sao chép</h2><p>Mỗi ô mặc định chỉ hiện một đoạn ngắn. Bấm “Xem toàn bộ” để đọc hết; nút “Sao chép” luôn sao chép toàn bộ nội dung.</p></div>
+
+<section class="card"><div class="card-head"><div><small>BƯỚC 1</small><h3>Đọc bài gốc và lập danh sách cần giữ</h3><p>Chỉ gửi bài gốc và lệnh này. Chưa gửi file SKILL.md.</p></div><button class="copy">Sao chép</button></div><div class="prompt-wrap"><pre class="prompt">Bạn đang thực hiện BƯỚC 1 của quy trình chuẩn hóa bài viết sang Editorial Design System.
+
+NHIỆM VỤ HIỆN TẠI CHỈ LÀ:
+ĐỌC VÀ PHÂN TÍCH SOURCE GỐC.
+
+TUYỆT ĐỐI CHƯA:
+- transform HTML;
+- sửa HTML;
+- chọn class EDS;
+- chọn component EDS;
+- viết lại nội dung;
+- sửa lỗi nội dung;
+- suy đoán cách trình bày cuối cùng.
+
+==================================================
+MỤC TIÊU
+==================================================
+
+Hãy đọc TOÀN BỘ bài viết/source từ đầu đến cuối và tạo một:
+
+SOURCE SEMANTIC INVENTORY
+(Bản kiểm kê các tín hiệu trình bày và cấu trúc có khả năng mang ý nghĩa)
+
+Inventory này sẽ được sử dụng ở bước cuối để kiểm tra xem sau khi transform có bỏ sót bất kỳ tín hiệu quan trọng nào của source hay không.
+
+Điều quan trọng:
+KHÔNG chỉ tìm những phần có màu sắc hoặc trang trí nổi bật.
+Bạn phải phát hiện cả những cấu trúc nhìn bình thường nhưng việc thay đổi cấu trúc có thể làm mất ý nghĩa.
+
+Từ phiên bản hiện tại, đặc biệt phải kiểm tra cả:
+- POSITIONAL SEMANTICS;
+- FORMAL FORM SCOPE;
+- EXACT DOCUMENT/FORM BOUNDARY;
+- SOURCE-BACKED FORMAL ALIGNMENT.
+
+Một table/div có thể chỉ là công cụ layout về kỹ thuật, nhưng vị trí trái/phải, grouping hoặc việc nhiều vùng liên tiếp cùng thuộc một biểu mẫu chính thức vẫn có thể mang meaning.
+Một article heading/warning nằm cạnh form chưa chắc là printed form content.
+Một source text-align center/right chưa chắc chỉ là trang trí; trong official form nó có thể giữ formal title identity, unit/date edge association hoặc signature relationship.
+
+==================================================
+NHỮNG THỨ PHẢI KIỂM TRA
+==================================================
+
+1. Tiêu đề / heading
+- H1/H2/H3/H4...
+- heading giả bằng font lớn/bold/màu;
+- title-like block ở đầu bài;
+- local heading như “Trường hợp 1”, “Lưu ý”, “Ví dụ”, “Kết luận”, “Như vậy”.
+
+2. Inline formatting
+- bold;
+- italic;
+- underline;
+- text có màu/background/font-size khác thường;
+- đoạn căn giữa/căn phải đặc biệt.
+
+3. Semantic emphasis
+- điều kiện;
+- ngoại lệ;
+- thời hạn;
+- ngưỡng;
+- kết luận;
+- công thức/quy trình;
+- cảnh báo/nguyên tắc/quy định pháp lý.
+
+4. Lists
+- UL/OL thật;
+- bullet thủ công (-, •, +, ü, Ø...);
+- bold label + description;
+- nhóm tài khoản/loại/trường hợp/khoản;
+- term → definition;
+- key → value.
+
+5. Accounting
+- Nợ/Có;
+- tài khoản;
+- nhóm bút toán;
+- giải thích đi kèm.
+
+6. Tables
+Với MỌI TABLE, kiểm tra:
+- số hàng/cột;
+- data table thật hay layout;
+- THEAD một/nhiều tầng;
+- rowspan/colspan;
+- empty cells và meaning của empty cells;
+- form-slot kiểu “Mã số thuế | ô | ô | ô | ...”;
+- nested tables;
+- cell trái/phải có relation không;
+- row/column dependencies;
+- child giải thích parent không;
+- table có thuộc cùng formal form với fields/declaration/signature xung quanh không.
+
+KHÔNG coi nested table presentation-only chỉ vì nó nested.
+KHÔNG coi table layout-only chỉ vì nó căn hai vùng song song.
+KHÔNG tách từng table độc lập rồi bỏ scope lớn hơn nếu source chứng minh cùng một form.
+
+7. Callout / box / bordered region
+- background/border/border-left;
+- “Lưu ý”, “Chú ý”, “Ví dụ”, quy định/cảnh báo/nguyên tắc.
+
+8. Source/legal attribution
+- “Theo Khoản...”, “Theo Điều...”, “Nguồn: ...”, citation line.
+
+9. Links
+- absolute/relative link;
+- special link text;
+- link có thể không hợp lệ sau transform.
+
+10. Images/media
+- image/caption/relative path;
+- image nằm trong layout đặc biệt.
+
+11. Layout/presentation-only structures
+- spacer/empty paragraph/separator/______;
+- wrapper một cell;
+- div/span không semantic;
+- table chỉ căn khoảng cách và không có relation.
+
+“table dùng để dàn chữ ký” KHÔNG mặc định presentation-only.
+Ngay cả MỘT signer: blank companion/column geometry có thể evidence side anchor; inventory trước cleanup.
+
+12. Official/formal document structure
+Nếu source là công văn/quyết định/thông báo/biểu mẫu/tờ khai/văn bản chính thức:
+- cơ quan ban hành;
+- số/ký hiệu;
+- quốc hiệu/tiêu ngữ/thẩm quyền;
+- địa danh/ngày;
+- trích yếu;
+- Kính gửi;
+- body;
+- vùng ký;
+- outer border/frame.
+
+Nếu hai vùng song song kiểu cơ quan/số ↔ quốc hiệu/tiêu ngữ/ngày, Relations ghi left↔right hoặc issuer↔authority khi evidence đủ.
+
+13. Signature / approval / confirmation
+Kiểm tra:
+- số bên;
+- label/chức danh/tên/note của từng bên;
+- source left→right order;
+- empty cell giữ vị trí;
+- single signer full-width/trái/giữa/phải và side-anchor evidence;
+- flatten thành prose có mất relationship không.
+
+Relations ghi khi có:
+- signer A ↔ signer B;
+- party A ↔ party B;
+- single signer ↔ source-backed right-side anchor;
+- người nộp ↔ đại diện/cơ quan xác nhận;
+- reviewer ↔ approver.
+
+14. Formal Form Scope — BẮT BUỘC KIỂM TRA
+Nếu source có coherent administrative/tax form, kiểm tra scope lớn hơn từng table.
+
+Cue thường gặp:
+- “Mẫu”, “Phụ lục”, tên/mã biểu mẫu;
+- “kèm theo ...”;
+- [01], [02], [03]...;
+- segmented form-slot;
+- bảng kê/matrix;
+- đơn vị tiền/chú giải;
+- cam đoan/xác nhận;
+- signature/approval;
+- wrapper/sequence nối các phần.
+
+Không dùng quota máy móc.
+Nếu evidence đủ inventory:
+- FORM START dự kiến;
+- FORM-OWNED CHILDREN;
+- FORM END dự kiến;
+- adjacent content KHÔNG thuộc form.
+
+Relations:
+formal form scope ↔ title/fields/form-slots/tables/legend/declaration/signatures.
+
+15. ABOUT vs OF — BẮT BUỘC CHO FORM/DOCUMENT
+Với các node sát FORM START/END, ghi rõ source evidence cho biết node đó là:
+
+A. EDITORIAL MATERIAL ABOUT THE FORM/DOCUMENT
+hay
+B. PRINTED / OFFICIAL CONTENT OF THE FORM/DOCUMENT.
+
+Đặc biệt inventory:
+- article H2/H3 giới thiệu/đặt tên mẫu;
+- editorial warning “Chú ý: mẫu này thay thế...”;
+- article lead-in/caption;
+- printed “Phụ lục / TÊN BIỂU MẪU”;
+- first form-specific field;
+- post-form “Xem thêm”.
+
+Không suy từ adjacency.
+Relations nên ghi:
+- article H2/warning ABOUT form ↔ OUTSIDE official scope;
+- printed form title ↔ FORM START;
+- post-form Xem thêm ↔ OUTSIDE.
+
+16. Source-backed Formal Alignment
+Trong official document/form, inventory alignment khi source position có thể giữ meaning:
+- printed form title/Phụ lục center;
+- địa danh/ngày source-backed side position;
+- “Đơn vị tiền: ...” căn phải ngay trên matrix;
+- issuer/authority placement;
+- signature/approval position;
+- certification/declaration position nếu có meaning.
+
+Evidence phải ghi exact source alignment/structure.
+Relations nên ghi:
+- printed form title ↔ centered formal identity;
+- unit/date line ↔ right/edge association;
+- signature ↔ side/party position.
+
+KHÔNG inventory mọi center/right như semantic mặc định; chỉ ghi risk khi flatten có thể làm mất meaning.
+
+17. Bất kỳ cấu trúc nào mà nếu xóa style, flatten HTML hoặc tách scope có thể làm người đọc hiểu khác source.
+
+==================================================
+OUTPUT FORMAT BẮT BUỘC
+==================================================
+
+Tạo ID theo thứ tự S01, S02, S03...
+
+Mỗi item:
+
+Sxx
+Location:
+...
+
+Source excerpt / structure:
+Trích đoạn ngắn CHÍNH XÁC hoặc mô tả cấu trúc đủ nhận diện.
+
+Evidence:
+Chỉ source evidence, ví dụ:
+- red + bold;
+- nested 2-column table;
+- rowspan=3;
+- 14 blank cells;
+- 2-cell signature row: left blank, right populated + centered;
+- article H2 + warning nằm trước printed “Phụ lục”;
+- printed form-title block text-align:center;
+- “Đơn vị tiền” text-align:right ngay trên matrix;
+- form title + [01]...[NN] + slots + matrix + declaration + signature sequence.
+
+Probable role:
+Ngôn ngữ tự nhiên, KHÔNG class EDS.
+
+Relations:
+- parent/child;
+- siblings;
+- left ↔ right;
+- issuer ↔ authority;
+- signer ↔ signer;
+- single signer ↔ source-backed right-side anchor;
+- party A ↔ party B;
+- formal form scope ↔ children;
+- editorial ABOUT form ↔ outside formal scope;
+- printed form title ↔ centered formal identity;
+- unit/date line ↔ source-backed edge alignment;
+- heading → content;
+- label → value;
+- header → data;
+v.v.
+
+Confidence:
+high / medium / low
+
+Risk:
+Điều gì có thể mất/hiểu sai.
+
+==================================================
+NGUYÊN TẮC QUAN TRỌNG
+==================================================
+
+Inventory là QUAN SÁT SOURCE, không phải đáp án transform.
+Không ghi “nên dùng ct-...” ở Bước 1.
+Chưa biết EDS ở bước này.
+Không sửa typo/luật/date/số liệu/account/URL.
+Không invent role/name/boundary/alignment.
+
+==================================================
+KẾT THÚC BƯỚC 1
+==================================================
+
+Cuối output ghi:
+TOTAL INVENTORY ITEMS: N
+
+DỪNG LẠI.
+KHÔNG transform.
+KHÔNG canonical HTML.
+KHÔNG tự chuyển bước.
+
+====DƯỚI ĐÂY LÀ SOURCE BÀI VIẾT =======</pre><div class="fade"></div></div><div class="card-foot"><button class="toggle">Xem toàn bộ</button></div></section>
+
+<section class="card"><div class="card-head"><div><small>BƯỚC 2</small><h3>Đọc file hướng dẫn và lập kế hoạch</h3><p>Gửi bài gốc + kết quả Bước 1 + file SKILL.md.</p></div><button class="copy">Sao chép</button></div><div class="prompt-wrap"><pre class="prompt">Bây giờ thực hiện BƯỚC 2.
+
+Bạn đã có:
+1. SOURCE GỐC;
+2. SOURCE SEMANTIC INVENTORY Bước 1;
+3. file skill ktd-editorial-html-transform-compact v1.1.3.
+
+Đọc TOÀN BỘ file skill trước khi transform.
+
+==================================================
+NHIỆM VỤ
+==================================================
+
+CHƯA transform bài viết.
+Chỉ:
+1. đọc/hiểu Compact Skill;
+2. đối chiếu cấu trúc Inventory với decision rules;
+3. chuẩn bị strategy transform.
+
+Inventory = EVIDENCE CHECKLIST, KHÔNG phải ANSWER KEY.
+Nếu Inventory ghi “warning”, “official header”, “single signer right”, “formal form” hoặc “centered form title”, phải đọc lại source + gate tương ứng; không map máy móc.
+
+==================================================
+TRANSFORM PLAN NGẮN GỌN
+==================================================
+
+Chỉ liệt kê nhóm quyết định thực sự xuất hiện:
+
+Opening/title:
+- ...
+
+Heading hierarchy:
+- ...
+
+Lists / peer groups:
+- ...
+
+Inline emphasis:
+- ...
+
+Callouts:
+- ...
+
+Accounting:
+- ...
+
+Formal form scope nếu có:
+- Exact source-backed FORM START: ...
+- Form-owned Sxx/vùng: ...
+- Exact source-backed FORM END: ...
+- Editorial ABOUT-form nodes phải OUTSIDE: ...
+- Post-form nodes phải OUTSIDE: ...
+- Boundary confidence / Needs review: ...
+
+Source-backed formal alignment nếu có:
+- centered printed form title: ...
+- right/edge unit/date line: ...
+- other formal alignment: ...
+- mapping dự kiến chỉ bằng existing ct-align-* nếu evidence đủ.
+
+Tables:
+- Table 1: ...
+- Table 2: ...
+- Nested table: ...
+
+Official / positional structures:
+- Official document/header nếu có: ...
+- Signature/approval parties: ...
+- Single signer side anchor: ...
+- Sxx có left↔right / party↔party risk: ...
+
+Links/media:
+- ...
+
+Known ambiguity / Needs review:
+- ...
+
+==================================================
+FORMAL FORM SCOPE PLAN GATE — BẮT BUỘC KHI CÓ CUE
+==================================================
+
+Nếu source có Mẫu/Phụ lục/form code + [01]...[NN] + slots + matrix + unit/legend + declaration + signature, hỏi:
+
+“Các phần này có cùng phục vụ MỘT official form và có boundary đủ rõ không?”
+
+Nếu YES:
+- xác định exact FORM START/END;
+- liệt kê form-owned Sxx;
+- đánh dấu article H2/lead-in/warning ABOUT form là OUTSIDE nếu không printed/form-owned;
+- đánh dấu Xem thêm/commentary sau form là OUTSIDE nếu không form-owned;
+- giữ coherent scope trước child-table classification.
+
+Nếu UNCERTAIN:
+- safest contiguous formal fragment;
+- Needs review;
+- không fragment phần chắc chắn cùng form.
+
+Nếu NO: không invent scope.
+
+Formal form có thể không có issuer↔authority header; không invent ct-official-header.
+
+==================================================
+ABOUT vs OF BOUNDARY PLAN GATE — BẮT BUỘC
+==================================================
+
+Với node sát FORM START/END, trả lời:
+
+1. Node này chỉ nói VỀ form/document (ABOUT) hay thực sự là nội dung IN/OF form/document?
+2. Source evidence nào chứng minh ownership?
+3. Nếu bỏ legacy wrapper, boundary có còn được preserve không?
+
+Đặc biệt kiểm tra:
+- article H2 giới thiệu form;
+- editorial warning giải thích form thay thế mẫu cũ/ngày hiệu lực;
+- printed “Phụ lục / TÊN BIỂU MẪU”;
+- first coded field;
+- post-form “Xem thêm”.
+
+Không dùng adjacency hoặc cùng legacy wrapper làm bằng chứng duy nhất.
+
+==================================================
+FORMAL ALIGNMENT PLAN GATE — BẮT BUỘC KHI CÓ SOURCE ALIGNMENT
+==================================================
+
+Trong official form/document, với center/right alignment hỏi:
+
+“Nếu normalize thành ordinary left prose, có mất formal title identity, edge association, date/unit association, role/party position không?”
+
+YES:
+- kế hoạch preserve bằng existing ct-align-left/center/right trên supported element.
+
+UNCERTAIN:
+- safest supported alignment + Needs review.
+
+NO:
+- normalize presentation.
+
+Không invent class mới/inline style.
+Không preserve mọi text-align máy móc.
+
+==================================================
+POSITIONAL PLAN GATE
+==================================================
+
+Với table/layout shell có nhiều vùng, hỏi:
+“Nếu serialize thành ordinary prose, có mất side/role/party/anchor/group relation không?”
+
+YES → không unwrap như layout-only.
+UNCERTAIN → safest grouping + Needs review.
+NO → cleanup được.
+
+Blank companion cell có thể là evidence cho neighboring signer anchor.
+Không fake blank signature party.
+Không shortcut “signature layout → unwrap”.
+
+==================================================
+BẮT BUỘC
+==================================================
+
+Không canonical HTML.
+Không sửa source.
+Không tự chuyển Bước 3.
+
+Kết thúc:
+READY FOR TRANSFORM: YES
+
+hoặc nếu thiếu evidence thực sự cần thiết:
+READY FOR TRANSFORM: NO
+và nói chính xác thiếu gì.</pre><div class="fade"></div></div><div class="card-foot"><button class="toggle">Xem toàn bộ</button></div></section>
+
+<section class="card"><div class="card-head"><div><small>BƯỚC 3</small><h3>Chuyển bài sang HTML chuẩn</h3><p>Chỉ dùng khi Bước 2 trả READY FOR TRANSFORM: YES.</p></div><button class="copy">Sao chép</button></div><div class="prompt-wrap"><pre class="prompt">Bây giờ thực hiện BƯỚC 3:
+
+TRANSFORM SOURCE GỐC theo:
+ktd-editorial-html-transform-compact v1.1.3
+và toàn bộ rule skill đã đọc ở Bước 2.
+
+==================================================
+NGUYÊN TẮC CAO NHẤT
+==================================================
+
+FORMAT-ONLY SEMANTIC TRANSFORMATION.
+
+KHÔNG:
+- rewrite/cải thiện/rút gọn/mở rộng;
+- sửa typo/số tiền/date/luật/account/Nợ-Có;
+- invent URL/image/heading/label/class/meaning;
+- invent name/role/signature/stamp/official metadata;
+- invent blank signature party;
+- invent ct-official-header cho headerless form;
+- invent ct-form-card/ct-signature-box/ct-official-table/is-government;
+- nuốt article H2/lead-in/editorial warning ABOUT form vào official scope nếu source không printed/form-owned;
+- giữ mọi legacy alignment máy móc;
+- reclassify simple↔complex để lấy màu formal đẹp hơn.
+
+Nếu source có vẻ sai: GIỮ NGUYÊN.
+Bước 3 không ghi ambiguity note vào HTML; Bước 4 audit.
+
+==================================================
+CÁCH THỰC HIỆN
+==================================================
+
+1. title-like opening;
+2. heading hierarchy;
+3. positional gate trước layout cleanup;
+4. detect coherent formal-document/form scope;
+5. run ABOUT-vs-OF exact boundary gate;
+6. run Formal Alignment Fidelity gate trước strip text-align;
+7. official header/signature structures nếu source hỗ trợ;
+8. prose/list/peer/definition/fact;
+9. inline emphasis/callout/key-line;
+10. content-box canonical div/p/div;
+11. accounting;
+12. classify mọi table;
+13. nested table inside→out;
+14. form-slot blank cells;
+15. THEAD/rowspan/colspan;
+16. map official/signature structures inside exact formal scope;
+17. preserve meaningful formal alignment bằng existing ct-align-*;
+18. links/media;
+19. remove presentation-only markup sau relationship+scope+boundary+alignment classification;
+20. whitespace.
+
+==================================================
+FORMAL FORM SCOPE + ABOUT/OF RULE — BẮT BUỘC
+==================================================
+
+Nếu source cho thấy coherent form qua Mẫu/Phụ lục/form code + [01]...[NN] + slots + matrix + form-owned unit/legend + declaration + signature:
+
+FORM START = first source-backed PRINTED/form-owned title/appendix title hoặc first form-specific field.
+FORM END = signature/approval hoặc last clearly form-owned content.
+
+Canonical:
+- chỉ wrap FORM-OWNED range bằng section.ct-official-document;
+- child table giữ own is-simple/is-complex/form-slot semantics;
+- signature giữ ct-signature-grid/party;
+- ct-official-header optional;
+- không invent official metadata;
+- không nested signature/form card.
+
+CRITICAL ABOUT ≠ OF:
+- article H2/H3 giới thiệu/đặt tên mẫu → OUTSIDE nếu chỉ editorial ABOUT form;
+- editorial warning/note giải thích mẫu thay thế/ngày hiệu lực → OUTSIDE nếu không printed/form-owned;
+- printed “Phụ lục / TÊN BIỂU MẪU” → có thể là FORM START khi source chứng minh;
+- post-form Xem thêm/commentary → OUTSIDE nếu không form-owned.
+
+Không dùng adjacency/cùng legacy wrapper làm lý do nuốt node vào scope.
+Nếu source chứng minh warning thật sự in trong form thì giữ trong scope.
+
+Exact boundary ambiguous:
+- safest contiguous formal fragment;
+- không note trong HTML;
+- Bước 4 REVIEW.
+
+Child đúng riêng lẻ nhưng scope/boundary sai = transform vẫn sai.
+
+==================================================
+FORMAL ALIGNMENT RULE — BẮT BUỘC KHI SOURCE HỖ TRỢ
+==================================================
+
+Trong genuine official document/form, preserve source-backed alignment chỉ khi nó giữ formal identity/edge/role relation.
+
+Examples:
+- printed “Phụ lục / BẢNG KÊ...” source-centered → p.ct-align-center khi evidence rõ;
+- “Đơn vị tiền: Đồng Việt Nam” source-right ngay trên matrix → p.ct-align-right khi edge association có meaning;
+- official place/date/role alignment → preserve khi source position có meaning;
+- signature position → positional component/alignment contract.
+
+Không preserve mọi center/right decorative line.
+Không inline style.
+Không invent ct-form-title/ct-unit-right/ct-official-center.
+
+==================================================
+TABLE RULE CỰC KỲ QUAN TRỌNG
+==================================================
+
+Không table-classify chỉ theo số cột.
+
+SIMPLE candidate:
+2–4 effective columns + straightforward matrix + absent/one-level header + no complex spans/header tree + no dense nested structural complexity.
+→ ƯU TIÊN is-simple.
+
+Không promote complex chỉ vì:
+- đúng 4 cột;
+- nhiều body rows;
+- long prose;
+- one-level header nổi bật.
+
+Strong complex cues:
+- 5+ effective columns;
+- multi-row/hierarchical header;
+- meaningful rowspan/colspan;
+- structural dense comparison/accounting matrix;
+- high-cell-count meaningful form grid.
+
+4-column vẫn complex nếu có strong structural cue khác.
+
+Official-document context:
+- semantic is-simple/is-complex KHÔNG đổi;
+- CSS tự render formal-neutral table mode;
+- tuyệt đối không đổi class để lấy màu.
+
+Mọi table FIT-ONLY.
+Transformer không width/min-width/horizontal-scroll/sticky/responsive class.
+Meaningful blank cells + spans preserve.
+Nested child không đổi parent.
+Form-slot cần real blank-slot evidence; populated 10+ cells không tự là form-slot; label không invent TH/THEAD.
+
+Nested Type C: 2–4 cols + simple → nested is-simple.
+Nested Type D: 5+ hoặc meaningful spans/header/dense complexity → nested is-complex.
+
+==================================================
+POSITIONAL SEMANTICS RULE
+==================================================
+
+Meaningful positional relationship > generic layout cleanup.
+
+Official header evidence đủ:
+section.ct-official-document
+div.ct-official-header
+div.ct-official-header__issuer
+div.ct-official-header__authority
+
+Không dùng is-legal thay whole official structure.
+
+Multiple signatories:
+div.ct-signature-grid + div.ct-signature-party.
+
+Single signer source-backed right:
+→ ONE-PARTY signature grid.
+- đúng một signer;
+- no fake empty party;
+- blank companion remove sau khi map evidence;
+- signer text center bên trong own region;
+- không page-center whole document;
+- only when source evidence đủ.
+
+Signature trong coherent form → inside ct-official-document; không nested card/frame semantic.
+Nếu relation meaningful nhưng role classification thiếu evidence → safest structure, Bước 4 review.
+
+==================================================
+LIST RULE
+==================================================
+
+Declared peer family + sibling bold-label items → UL/LI + STRONG.
+Không Definition List chỉ vì bold label.
+
+==================================================
+ACCOUNTING RULE
+==================================================
+
+Debit/credit chỉ khi source thật Nợ/Có.
+Không invent “Định khoản”.
+
+==================================================
+CONTENT BOX RULE
+==================================================
+
+ROOT: div.ct-content-box + đúng 1 variant.
+TITLE nếu source có: p.ct-content-box__title.
+BODY: div.ct-content-box__body.
+
+Không sinh:
+aside.ct-content-box
+blockquote.ct-content-box
+div.ct-content-box__title
+
+Không invent visible title/variant để làm đẹp.
+
+==================================================
+LINK / MEDIA RULE
+==================================================
+
+Không invent URL/image destination.
+Relative filename.html / assets/... / ../page.html không tự prepend `/`.
+Nếu unsafe: giữ visible text/caption appropriate, không đoán migration.
+
+==================================================
+HTML CODE-BLOCK OUTPUT CONTRACT — BẮT BUỘC TUYỆT ĐỐI
+==================================================
+
+BƯỚC 3 chỉ trả:
+MỘT CODE BLOCK DUY NHẤT language html.
+
+BÊN TRONG: CHỈ CANONICAL HTML hoàn chỉnh.
+BÊN NGOÀI: KHÔNG text.
+
+CẤM lời dẫn/note/explanation/QA/PASS-FAIL/“Kết quả”/“HTML”/HTML comment giải thích/text trước-sau.
+
+Output hình thức:
+
+```html
+[TOÀN BỘ CANONICAL HTML Ở ĐÂY]
+```
+
+1. câu trả lời bắt đầu opening fence ```html;
+2. bên trong chỉ Canonical HTML;
+3. kết thúc sau element cuối;
+4. closing ```;
+5. DỪNG NGAY.
+
+Fence chỉ là TRANSPORT WRAPPER để dễ copy, không phải Canonical HTML artifact.
+Không tuyên bố PASS/reconciliation ở Bước 3.</pre><div class="fade"></div></div><div class="card-foot"><button class="toggle">Xem toàn bộ</button></div></section>
+
+<section class="card"><div class="card-head"><div><small>BƯỚC 4</small><h3>Kiểm tra lại toàn bộ bài đã chuyển</h3><p>Đưa cho AI: bài gốc + Bước 1 + SKILL.md + HTML mới nhất.</p></div><button class="copy">Sao chép</button></div><div class="prompt-wrap"><pre class="prompt">Bây giờ thực hiện BƯỚC 4:
+
+FINAL RECONCILIATION + FIDELITY QA.
+
+Không mặc định Canonical HTML Bước 3 đúng.
+SOURCE = source of truth về nội dung/relationship/boundary/alignment evidence.
+INVENTORY = evidence checklist, không answer key.
+Compact Skill v1.1.3 = transformation contract.
+Canonical HTML = artifact cần audit.
+
+==================================================
+PHẦN 1 — INVENTORY RECONCILIATION
+==================================================
+
+Quay lại TỪNG Sxx.
+Với mỗi item xác định:
+1. Source evidence?
+2. Canonical xử lý ở đâu?
+3. Semantic nào?
+4. Meaning giữ không?
+5. Relations/group membership/form-scope/boundary/alignment ownership giữ không?
+
+Disposition chỉ:
+Converted / Preserved / Normalized / Removed legitimately / Needs review.
+
+Format:
+S01
+Source: ...
+Canonical: ...
+Disposition: ...
+Reason: ...
+Result: PASS / REVIEW / FAIL
+
+==================================================
+SOURCE COVERAGE
+==================================================
+
+SOURCE COVERAGE = reconciled Sxx / total Sxx.
+Mọi Sxx phải giải trình.
+Needs review tính reconciled nếu ambiguity explicit.
+Completion requires 100%.
+
+==================================================
+PHẦN 2 — VISIBLE TEXT FIDELITY
+==================================================
+
+So SOURCE và CANONICAL.
+Chỉ normalize legitimate presentation-only differences: manual marker, decorative separator, empty layout paragraph, truly layout-only shell, unsafe href attribute với visible text còn.
+Không over-normalize.
+
+Report:
+Normalized source visible text: N characters
+Normalized canonical visible text: N characters
+VISIBLE TEXT FIDELITY: PASS / REVIEW / FAIL
+
+Visible Text PASS không đồng nghĩa Structural/Positional/Form-Scope/Alignment PASS.
+
+==================================================
+PHẦN 3 — HEADING AUDIT
+==================================================
+
+- body H1=0;
+- major H2/sub H3/H4;
+- meaningful opening không mất;
+- article heading ABOUT form không bị nuốt vào printed formal scope nếu source không form-owned;
+- printed form title không bị biến thành article H1.
+
+HEADING AUDIT: PASS / REVIEW / FAIL
+
+==================================================
+PHẦN 4 — EMPHASIS / CALLOUT AUDIT
+==================================================
+
+Audit source emphasis/callout/legal/note/example/result/formula/process/source attribution.
+Kiểm tra over-format, paint-only mapping, long highlight, is-legal misuse, invented title.
+Đặc biệt: editorial warning ABOUT form phải ở ngoài official scope khi source chứng minh không printed/form-owned.
+
+EMPHASIS / CALLOUT AUDIT: PASS / REVIEW / FAIL
+
+==================================================
+PHẦN 5 — LIST AUDIT
+==================================================
+
+Audit item count/boundary/order/manual marker/double bullet/peer-vs-definition/checklist/steps.
+LIST AUDIT: PASS / REVIEW / FAIL
+
+==================================================
+PHẦN 6 — ACCOUNTING AUDIT
+==================================================
+
+Audit Nợ/Có/account codes/amounts/order/group/explanation relation; no invented “Định khoản”.
+ACCOUNTING AUDIT: PASS / REVIEW / FAIL
+
+==================================================
+PHẦN 7 — TABLE AUDIT
+==================================================
+
+Với TỪNG TABLE audit:
+1 classification layout/form-slot/simple/complex/positional/nested A-D;
+2 source/canonical row disposition;
+3 cell order;
+4 visible text;
+5 blank cells;
+6 THEAD/TBODY/TFOOT;
+7 ROWSPAN/COLSPAN;
+8 nested relation;
+9 parent-child independence;
+10 form-slot evidence;
+11 populated 10+ not mis-form-slot;
+12 no fake TH/THEAD for slot label;
+13 meaningful nested not flattened;
+14 Type B relation;
+15 Type C matrix;
+16 Type D spans/header;
+17 positional table mapping;
+18 simple 2–4 not over-promoted due to 4 cols/many rows/long prose;
+19 5+ as strong cue with structural evidence;
+20 single-signer blank companion processed as positional evidence;
+21 form-owned table remains inside coherent official scope;
+22 **official-document context did not change semantic class merely to obtain formal-neutral colors**.
+
+Do not evaluate table by scrollbar. EDS/CSS owns visual fit and contextual palette.
+No “signature layout = Type A”. No “4 columns = complex”.
+
+TABLE N: PASS / REVIEW / FAIL
+TABLE AUDIT OVERALL: PASS / REVIEW / FAIL
+
+==================================================
+PHẦN 8 — LINKS / MEDIA AUDIT
+==================================================
+
+No invented URL; no arbitrary prepend `/`; visible text preserved; no guessed CDN/R2; removed migration reported.
+LINK/MEDIA AUDIT: PASS / REVIEW / FAIL
+
+==================================================
+PHẦN 9 — POSITIONAL FIDELITY AUDIT — BẮT BUỘC
+==================================================
+
+Với mỗi positional Sxx:
+1 visible text;
+2 groups/parties distinct;
+3 source order;
+4 issuer↔authority;
+5 signatory parties;
+6 party membership;
+7 single signer side anchor;
+8 no fake blank party;
+9 signer not page-centered when source right-anchor;
+10 label↔explanation/other relation;
+11 no pair serialized into unrelated prose;
+12 no unwrap before relationship classification;
+13 canonical positional classes survive sanitizer/editor.
+
+“Nội dung còn đủ chữ” KHÔNG đồng nghĩa fidelity PASS.
+Meaningful relation lost → POSITIONAL FIDELITY FAIL → FAIL — FIX BEFORE PUBLISH.
+
+POSITIONAL FIDELITY AUDIT: PASS / REVIEW / FAIL
+
+==================================================
+PHẦN 10 — FORMAL FORM SCOPE / BOUNDARY AUDIT — BẮT BUỘC KHI CÓ CUE
+==================================================
+
+Nếu coherent form có cue, audit exact ownership:
+
+FORM START
+1. printed/form-owned title/appendix/first field xác định start đúng không?
+2. article H2/H3/lead-in ABOUT form có ở NGOÀI nếu không printed/form-owned không?
+3. editorial warning/note ABOUT form có ở NGOÀI nếu không printed/form-owned không?
+
+FORM BODY
+4. printed form title/code trong scope?
+5. coded fields trong scope?
+6. slots intact/in scope?
+7. simple/complex matrices in scope + own semantics?
+8. form-owned unit/legend/declaration in scope?
+
+FORM END
+9. signature/approval in scope?
+10. party count/order/membership đúng?
+11. scope end đúng last form-owned content?
+12. Xem thêm/commentary OUTSIDE nếu không form-owned?
+
+HEADER/OVER-WRAP
+13. headerless form có invent ct-official-header không?
+14. invent official metadata không?
+15. nested signature/form card không?
+
+CRITICAL:
+- child tables/signatures correct nhưng coherent scope lost → FAIL;
+- editorial ABOUT-form node swallowed inside despite clear boundary → FAIL;
+- form-owned node left outside despite clear boundary → FAIL.
+
+FORMAL FORM SCOPE FIDELITY AUDIT: PASS / REVIEW / FAIL / NOT APPLICABLE
+
+==================================================
+PHẦN 11 — FORMAL ALIGNMENT FIDELITY AUDIT — BẮT BUỘC KHI CÓ EVIDENCE
+==================================================
+
+Audit source-backed formal alignment độc lập với visible text:
+
+1. printed formal title/Phụ lục source-centered có còn center bằng supported canonical alignment khi identity cần không?
+2. unit/currency line source-right ngay trên matrix có còn right/edge association khi meaning rõ không?
+3. official place/date/role alignment có còn khi position mang meaning không?
+4. signature/approval positioning có được giữ qua positional component/alignment contract không?
+5. chỉ existing ct-align-left/center/right được dùng; no inline style/new class?
+6. có preserve nhầm decorative center/right không?
+
+Nếu source evidence rõ và all text còn nhưng formal identity/edge association bị mất:
+→ FORMAL ALIGNMENT FIDELITY: FAIL
+→ FAIL — FIX BEFORE PUBLISH.
+
+Nếu meaning của alignment thật sự ambiguous:
+→ REVIEW, không đoán.
+
+FORMAL ALIGNMENT FIDELITY AUDIT: PASS / REVIEW / FAIL / NOT APPLICABLE
+
+==================================================
+PHẦN 12 — OFFICIAL TABLE CONTEXT AUDIT
+==================================================
+
+Nếu có table trong ct-official-document:
+
+Semantic audit:
+- is-simple/is-complex/form-slot classification vẫn dựa source structure?
+- không thêm ct-official-table/is-government/is-formal-table?
+- không đổi class chỉ vì muốn màu khác?
+
+Presentation ownership audit:
+- HTML không chứa inline colors/width/radius/hover/zebra logic?
+- contextual formal-neutral appearance để CSS xử lý?
+
+Ordinary table ngoài official document không bị semantic/class change vì official mode.
+
+OFFICIAL TABLE CONTEXT AUDIT: PASS / REVIEW / FAIL / NOT APPLICABLE
+
+==================================================
+PHẦN 13 — SANITIZER QA
+==================================================
+
+No inline style/script/iframe/form-input/event/arbitrary class/data-*/body H1/unsafe URL.
+Canonical classes/tables/spans valid.
+
+CONTENT BOX:
+- div.ct-content-box;
+- exactly one variant;
+- optional source-backed p.ct-content-box__title;
+- div.ct-content-box__body;
+- no new aside/blockquote root or div title;
+- missing/conflicting variant = FAIL.
+
+POSITIONAL/FORM:
+section.ct-official-document
+div.ct-official-header / issuer / authority
+div.ct-signature-grid / party
+No ct-form-card/ct-signature-box/ct-two-col/ct-left/ct-right/ct-document-card.
+One-party signature grid only when source-backed side anchor.
+Headerless form no invented official header.
+No conflicting section roots.
+
+FORMAL ALIGNMENT:
+existing supported ct-align-left/center/right only; no inline style/new alignment class.
+
+SANITIZER QA: PASS / REVIEW / FAIL
+
+==================================================
+PHẦN 14 — NEEDS REVIEW
+==================================================
+
+List all genuine ambiguity: source typo/outdated law/unsafe URL/nested depth/malformed span/missing metadata/media migration/ambiguous role/ambiguous signer anchor/ambiguous exact form boundary/ambiguous semantic importance of alignment.
+Không sửa factual/source issues trong FORMAT-ONLY.
+
+==================================================
+FINAL OUTPUT FORMAT
+==================================================
+
+A. INVENTORY RECONCILIATION
+S01 → ...
+...
+Inventory items: N
+Reconciled: N
+SOURCE COVERAGE: X%
+
+B. FIDELITY / STRUCTURAL QA
+Visible Text Fidelity: ...
+Heading Audit: ...
+Emphasis / Callout Audit: ...
+List Audit: ...
+Accounting Audit: ...
+Table Audit: ...
+Links/Media Audit: ...
+Positional Fidelity Audit: ...
+Formal Form Scope / Boundary Audit: ...
+Formal Alignment Fidelity Audit: ...
+Official Table Context Audit: ...
+Sanitizer QA: ...
+
+C. NEEDS REVIEW
+...
+
+D. FINAL RESULT
+Chỉ: PASS / PASS WITH NEEDS REVIEW / FAIL — FIX BEFORE PUBLISH
+
+==================================================
+FINAL PASS GATE
+==================================================
+
+PASS chỉ khi Source Coverage=100% và không fidelity failure.
+
+FAIL nếu:
+- visible meaning lost;
+- table association/span/item boundary lost;
+- simple 2–4 over-promoted only for 4 cols/rows/prose;
+- positional relation lost;
+- single signer anchor lost/fake party;
+- coherent form fragmented;
+- editorial H2/warning ABOUT form swallowed inside despite clear source boundary;
+- form-owned node left outside despite clear boundary;
+- source-backed meaningful formal alignment lost;
+- headerless form invents official header/metadata;
+- content-box contract fails;
+- unsupported/arbitrary canonical structure;
+- table semantic class changed merely for official palette.
+
+PASS WITH NEEDS REVIEW only when content/relationships/safest supported scope/alignment preserved but source ambiguity remains.
+
+Nếu fixable transform errors, thêm:
+E. REQUIRED CORRECTIONS
+và exact canonical region cần sửa.
+Không tự sửa factual source.</pre><div class="fade"></div></div><div class="card-foot"><button class="toggle">Xem toàn bộ</button></div></section>
+
+<section class="card"><div class="card-head"><div><small>BƯỚC 5 — CHỈ DÙNG KHI CẦN</small><h3>Sửa lỗi chuyển đổi rồi xuất lại HTML</h3><p>Sau khi Bước 5 xong, bắt buộc quay lại Bước 4.</p></div><button class="copy">Sao chép</button></div><div class="prompt-wrap"><pre class="prompt">Bây giờ thực hiện BƯỚC 5:
+
+REPAIR CANONICAL HTML DỰA TRÊN FINAL QA BƯỚC 4.
+
+==================================================
+INPUT
+==================================================
+
+1. SOURCE GỐC;
+2. SOURCE SEMANTIC INVENTORY;
+3. Compact Skill v1.1.3;
+4. CANONICAL HTML hiện tại;
+5. FINAL QA REPORT;
+6. REQUIRED CORRECTIONS nếu có.
+
+==================================================
+MỤC TIÊU
+==================================================
+
+Tạo CANONICAL HTML MỚI đã sửa fixable transform errors.
+Đây là REPAIR PASS, KHÔNG rewrite pass.
+Chỉ sửa có căn cứ từ Source + Inventory + Skill + QA.
+
+SOURCE = truth về content/relationship/boundary/alignment evidence.
+Inventory = evidence checklist.
+Skill = contract.
+QA = lỗi cần sửa.
+Canonical HTML hiện tại không phải truth.
+
+==================================================
+PHÂN LOẠI LỖI
+==================================================
+
+A. FIXABLE TRANSFORM ERROR, ví dụ:
+- omitted source;
+- heading/list/emphasis/callout/accounting sai;
+- missing cell/span/nested relation/form-slot;
+- simple 4-col over-classified complex without other cue;
+- relative URL bị tự sửa;
+- arbitrary class/style/unsupported markup;
+- official header serialized;
+- signature parties lost;
+- single right signer page-centered/fake blank party;
+- coherent formal form fragmented;
+- article H2/lead-in/editorial warning ABOUT form bị over-wrap;
+- form-owned child bị under-wrap;
+- printed source-centered form title mất center;
+- right-aligned unit/date edge relation bị mất;
+- headerless form invents official header/metadata;
+- semantic table class đổi chỉ để lấy official palette.
+→ PHẢI SỬA tối thiểu.
+
+B. SOURCE AMBIGUITY / EXTERNAL MIGRATION:
+- law/source typo;
+- missing CMS metadata;
+- relative URL/media migration;
+- malformed table insufficient evidence;
+- depth>1 review;
+- ambiguous issuer role;
+- ambiguous single signer anchor;
+- ambiguous exact form boundary;
+- ambiguous whether center/right alignment is meaning-bearing or decorative.
+→ KHÔNG tự sửa factual/source; safest preserve + Needs review.
+
+==================================================
+QUY TRÌNH REPAIR
+==================================================
+
+1. Đọc lại full Source.
+2. Relevant Sxx.
+3. Relevant Compact rule.
+4. QA finding.
+5. Locate exact Canonical fragment.
+6. Smallest necessary change.
+7. Không touch PASS regions nếu không cần.
+8. Regression-check related regions.
+9. Output full revised Canonical HTML.
+
+==================================================
+FIDELITY GUARD
+==================================================
+
+Không thêm/bớt/paraphrase/sửa typo-law-date-money-percentage-account/Nợ-Có/URL/image/fact/official metadata.
+Trừ presentation-only normalization skill cho phép.
+
+==================================================
+TABLE REPAIR GUARD
+==================================================
+
+Đối chiếu source row/effective columns/cell order/blank cells/THEAD/TBODY/TFOOT/rowspan/colspan/nested relation/parent-child/position/simple-complex cues/form scope.
+
+2–4 simple structure → repair is-simple nếu over-promoted.
+4 cols alone not complex.
+5+ strong cue with structural evidence.
+Không đổi class vì màu.
+Không width/min-width/scroll/sticky/responsive class.
+Official-document formal-neutral appearance = CSS-owned, không repair HTML class để lấy palette.
+
+==================================================
+POSITIONAL REPAIR GUARD
+==================================================
+
+Quay exact source + Sxx; restore exact group boundaries/order.
+Official header canonical only if evidence đủ.
+Signature canonical only if evidence đủ.
+Single signer right: ONE party, no fake blank, exact text, no ct-left/right, no page-center.
+No invented role/name/date/stamp/is-legal substitute/generic two-col classes.
+Ambiguous role → Needs review, không đoán.
+
+==================================================
+FORMAL FORM BOUNDARY REPAIR GUARD
+==================================================
+
+Nếu scope FAIL:
+1. full Source;
+2. form-scope Sxx;
+3. exact printed/form-owned START/END;
+4. exact form-owned vs adjacent ABOUT-form nodes;
+5. smallest boundary repair.
+
+FRAGMENTED/UNDER-WRAP:
+- wrap only form-owned range bằng section.ct-official-document;
+- keep PASS child tables/signatures unchanged where possible.
+
+OVER-WRAP:
+- move article H2/H3/lead-in/editorial warning ABOUT form outside when source proves not printed;
+- move post-form Xem thêm/commentary outside;
+- preserve source order.
+
+No invented official header/metadata/form-card/signature-box.
+Ambiguous exact boundary → Needs review, không đoán.
+
+==================================================
+FORMAL ALIGNMENT REPAIR GUARD
+==================================================
+
+Nếu alignment FAIL:
+- exact Source + Sxx;
+- restore ONLY clearly source-backed meaningful alignment;
+- use existing ct-align-left/center/right on supported element;
+- centered printed form title may map ct-align-center;
+- right/edge unit/date may map ct-align-right;
+- no inline style/new class;
+- do not preserve unrelated decorative alignment.
+
+Ambiguous semantic value → Needs review.
+
+==================================================
+CONTENT BOX REPAIR GUARD
+==================================================
+
+Canonical:
+&lt;div class=&quot;ct-content-box [ONE VARIANT]&quot;&gt;
+  &lt;p class=&quot;ct-content-box__title&quot;&gt;...&lt;/p&gt; ← only source-backed
+  &lt;div class=&quot;ct-content-box__body&quot;&gt;...&lt;/div&gt;
+&lt;/div&gt;
+
+Normalize legacy root/title shape when meaning unchanged.
+Missing/conflicting variant → reread source/Sxx/skill; if insufficient → Needs review, do not guess.
+No invented visible title.
+
+==================================================
+INVENTORY REPAIR GUARD
+==================================================
+
+For affected Sxx report:
+Sxx:
+Previous problem:
+...
+Correction:
+...
+Canonical location after repair:
+...
+Meaning preserved: YES/NO
+Relationship / scope / boundary / alignment preserved: YES / NO / NOT APPLICABLE
+
+If required preservation = NO, repair not complete.
+
+==================================================
+KHÔNG TỰ HỢP THỨC HÓA QA
+==================================================
+
+Không đổi/delete Inventory/Relations/QA criteria để fit output.
+Không over-normalize.
+Không hạ FAIL.
+Inventory Bước 1 fixed baseline.
+
+==================================================
+OUTPUT BẮT BUỘC
+==================================================
+
+A. REPAIR SUMMARY
+R01...
+QA finding:
+Source evidence:
+Repair:
+Affected Sxx:
+Status: FIXED / NOT FIXABLE / NEEDS REVIEW
+
+B. REVISED CANONICAL HTML
+TOÀN BỘ HTML mới, không fragment.
+Tên logic: CANONICAL HTML — REVISION N+1
+
+C. REMAINING NEEDS REVIEW
+Chỉ source ambiguity/factual/legal/missing metadata/URL-media migration/malformed source/ambiguous positional role/boundary/alignment/human review.
+Nếu không: NONE
+
+==================================================
+KHÔNG ĐƯỢC FINAL PASS
+==================================================
+
+Không tuyên bố PASS/PUBLISH READY/QA COMPLETE.
+Bản repaired bắt buộc quay lại BƯỚC 4.
+
+Kết thúc:
+REPAIR COMPLETE.
+RE-RUN STEP 4 QA ON REVISED CANONICAL HTML.</pre><div class="fade"></div></div><div class="card-foot"><button class="toggle">Xem toàn bộ</button></div></section>
+
+<div class="note"><strong>Gợi ý cho nhân viên:</strong> nên giữ câu trả lời từng bước trong cùng cuộc trò chuyện. Nếu mở chat mới, gửi lại bài gốc, Bước 1, SKILL.md và HTML mới nhất. Workflow này đồng bộ với Compact Skill v1.1.3 / Canonical Skill v1.4.3 / EDS v2.4.3.</div>
+<footer>Kế Toán Diệu Tâm — Bộ lệnh chuẩn hóa bài viết</footer>
+</main>
+<script>
+(()=>{const cards=[...document.querySelectorAll('.card')];async function cp(text,b){try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(text)}else{const t=document.createElement('textarea');t.value=text;t.style.position='fixed';t.style.opacity='0';document.body.appendChild(t);t.select();document.execCommand('copy');t.remove()}const old=b.textContent;b.textContent='Đã sao chép ✓';b.classList.add('done');setTimeout(()=>{b.textContent=old;b.classList.remove('done')},1400)}catch(e){b.textContent='Không sao chép được';setTimeout(()=>b.textContent='Sao chép',1500)}}cards.forEach(c=>{const b=c.querySelector('.copy'),t=c.querySelector('.toggle'),p=c.querySelector('.prompt');b.addEventListener('click',()=>cp(p.textContent,b));t.addEventListener('click',()=>{const o=c.classList.toggle('open');t.textContent=o?'Thu gọn':'Xem toàn bộ'})});document.querySelector('[data-open-all]').onclick=()=>cards.forEach(c=>{c.classList.add('open');c.querySelector('.toggle').textContent='Thu gọn'});document.querySelector('[data-close-all]').onclick=()=>cards.forEach(c=>{c.classList.remove('open');c.querySelector('.toggle').textContent='Xem toàn bộ'})})();
+</script>
+</body>
+</html>
