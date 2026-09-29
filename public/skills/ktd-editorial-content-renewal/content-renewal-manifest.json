@@ -1,0 +1,27 @@
+{
+  "status": "OFFICIAL",
+  "releaseId": "KTD-EDITORIAL-CONTENT-RENEWAL-OFFICIAL-V1.7.0",
+  "effectiveDate": "2026-09-07",
+  "adoptedFromCommit": "a876b407865e3fad96805bc027f22fef6ee88e5e",
+  "skillRuntimeVersion": "1.6.3",
+  "promptSetVersion": "1.7.0",
+  "workflowPolicy": "MATERIAL_ACCURACY_AND_PRESERVATION_V4",
+  "canonicalPromptCount": 6,
+  "composition": "FRAGMENT_MANIFEST_NO_DUPLICATED_PROMPT_TEXT",
+  "skill": "./SKILL.md",
+  "sources": [
+    {"path": "./content-renewal-prompts-v170-phase7j-candidate.html", "steps": [1,2,3], "role": "AUDIT_RESEARCH_PLAN"},
+    {"path": "./content-renewal-step4-v170-phase3-candidate.html", "steps": [4], "role": "WRITER"},
+    {"path": "./content-renewal-step5-v170-phase7j-candidate.html", "steps": [5], "role": "FINAL_QA"},
+    {"path": "./content-renewal-step6-v170-phase7h-candidate.html", "steps": [6], "role": "MINIMAL_REPAIR"}
+  ],
+  "uxContract": {
+    "language": "VIETNAMESE_FIRST",
+    "workflowVisibility": "HIDDEN_UNTIL_SUCCESSFUL_ANALYSIS",
+    "reanalyzeReset": "RESET_COPY_STATES_LOOP_BUDGETS_LAST_STEP",
+    "clarification": "SECONDARY_MAX_ONE_PREWRITE_OR_POSTQA",
+    "repair": "MAX_ONE_STEP6_THEN_ONE_FINAL_STEP5",
+    "storage": "SESSION_STORAGE_ONLY"
+  },
+  "promotionPolicy": "OFFICIAL_AFTER_OWNER_APPROVED_REAL_WORLD_GOLDEN_WORKFLOW_PASS"
+}

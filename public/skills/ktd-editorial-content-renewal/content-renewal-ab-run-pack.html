@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KTD Content Renewal — A/B Run Pack</title>
+<meta name="description" content="Tạo fingerprint và run manifest có thể tái kiểm cho A/B OLD vs NEW Content Renewal workflow. Local-only, không gọi AI/API.">
+<style>
+:root{--bg:#f4f7f5;--surface:#fff;--text:#17231d;--muted:#66746c;--border:#dce6df;--green:#176b4d;--green-dark:#0f5138;--green-soft:#eef8f2;--amber:#9a6200;--amber-soft:#fff8e8;--red:#a33b2b;--red-soft:#fff3ef;--shadow:0 10px 30px rgba(19,54,40,.07);--radius:15px}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}.page{width:min(1180px,calc(100% - 32px));margin:auto;padding:32px 0 64px}header,.panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}header{padding:28px 30px;background:linear-gradient(135deg,#123f35,#176b4d);color:#fff;border:0}h1{margin:0;font-size:clamp(27px,4vw,36px);line-height:1.15}header p{max-width:880px;margin:10px 0 0;color:#dff3e9}.panel{margin-top:20px;padding:22px 24px}h2{margin:0 0 6px;font-size:21px}.helper{margin:0;color:var(--muted);font-size:14px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.meta-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:15px}.field label{display:block;margin-bottom:6px;font-size:12px;font-weight:800;color:#405048}.field input,.field select,.field textarea{width:100%;border:1.5px solid #cbd7d0;border-radius:10px;background:#fbfcfb;color:var(--text);font:inherit;outline:none}.field input,.field select{height:42px;padding:8px 10px}.field textarea{min-height:280px;padding:12px;resize:vertical;font:12.5px/1.5 "SFMono-Regular",Consolas,"Liberation Mono",monospace}.field input:focus,.field select:focus,.field textarea:focus{border-color:#63a98a;box-shadow:0 0 0 4px rgba(23,107,77,.09);background:#fff}.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px}.btn{min-height:40px;padding:9px 14px;border:1px solid #d4ded8;border-radius:10px;background:#fff;color:#34443c;font:inherit;font-weight:800;cursor:pointer}.btn.primary{background:var(--green);border-color:var(--green);color:#fff}.btn:disabled{opacity:.48;cursor:not-allowed}.btn:not(:disabled):hover{transform:translateY(-1px)}.notice{margin-top:14px;padding:11px 13px;border-radius:10px;background:#eff6ff;color:#1f4f91;font-size:13px}.warning{background:var(--amber-soft);color:#744b00}.error{background:var(--red-soft);color:#843326}.fingerprint{margin-top:15px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.card{border:1px solid var(--border);border-radius:11px;padding:13px;background:#fafcfb}.card strong{display:block;font-size:12px;color:#4a5a51;margin-bottom:4px}.mono{font:12px/1.45 "SFMono-Regular",Consolas,"Liberation Mono",monospace;overflow-wrap:anywhere}.pack{white-space:pre-wrap;overflow-wrap:anywhere;border:1px dashed #cbd8d1;border-radius:10px;padding:12px;background:#fbfcfb;font:11.8px/1.5 "SFMono-Regular",Consolas,"Liberation Mono",monospace;min-height:150px}.links{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.links a{display:inline-flex;align-items:center;min-height:38px;padding:8px 12px;border-radius:9px;border:1px solid #cfe0d7;color:var(--green-dark);font-weight:800;text-decoration:none;background:var(--green-soft)}.status{margin-top:12px;font-weight:800;font-size:13px}.status.ready{color:var(--green-dark)}.status.stale{color:var(--amber)}.live{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}@media(max-width:820px){.grid,.meta-grid,.fingerprint{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main class="page">
+<header>
+<h1>Content Renewal — A/B Run Pack</h1>
+<p>Khóa cùng một source/title/model/config/commit cho OLD và NEW bằng SHA-256. Công cụ chỉ chạy trong tab hiện tại, không gọi AI/API và không thay đổi nội dung bài.</p>
+</header>
+
+<section class="panel">
+<h2>1. Khóa điều kiện A/B</h2>
+<p class="helper">Điền metadata trước khi tạo pack. Repo SHA nên là commit chứa đúng OLD/NEW/Skill/prompt dùng cho cả hai lượt.</p>
+<div class="meta-grid">
+<div class="field"><label for="repoSha">Repo commit SHA</label><input id="repoSha" autocomplete="off" placeholder="5f717c29..."></div>
+<div class="field"><label for="model">Model</label><input id="model" autocomplete="off" placeholder="Ví dụ: GPT-5.6 Sol"></div>
+<div class="field"><label for="modelConfig">Model configuration</label><input id="modelConfig" autocomplete="off" placeholder="Cùng configuration cho cả OLD/NEW"></div>
+<div class="field"><label for="mode">Mode</label><select id="mode"><option>Normal</option><option>Verified</option></select></div>
+<div class="field"><label for="articleTitle">Tiêu đề bài</label><input id="articleTitle" autocomplete="off" placeholder="Tiêu đề dùng giống nhau ở cả hai lượt"></div>
+<div class="field"><label for="sourceId">Source / fixture ID</label><input id="sourceId" autocomplete="off" value="editorial-content-renewal-promotional-resource-cases.html"></div>
+</div>
+<div class="field" style="margin-top:14px"><label for="sourceInput">Canonical HTML source — nguồn duy nhất cho cả OLD và NEW</label><textarea id="sourceInput" spellcheck="false" placeholder="Dán chính xác cùng một Canonical HTML source..."></textarea></div>
+<div class="actions"><button class="btn primary" id="generateBtn" type="button">Tạo A/B Run Pack</button><button class="btn" id="copySourceBtn" type="button" disabled>Sao chép exact source</button><button class="btn" id="clearBtn" type="button">Làm mới</button></div>
+<div id="inputStatus" class="status"></div>
+<div class="notice warning">Sau khi tạo pack, nếu sửa bất kỳ metadata/title/source nào, pack chuyển sang STALE và phải tạo lại trước khi chạy A/B.</div>
+</section>
+
+<section id="resultPanel" class="panel" hidden>
+<h2>2. Fingerprint bất biến của cặp chạy</h2>
+<p class="helper">Source SHA-256 dùng để chứng minh hai lượt dùng cùng byte source. Pair ID khóa thêm title + commit + model/config + mode.</p>
+<div class="fingerprint">
+<div class="card"><strong>PAIR ID</strong><div id="pairId" class="mono"></div></div>
+<div class="card"><strong>SOURCE SHA-256</strong><div id="sourceSha" class="mono"></div></div>
+<div class="card"><strong>SOURCE SIZE</strong><div id="sourceStats" class="mono"></div></div>
+<div class="card"><strong>RUN IDS</strong><div id="runIds" class="mono"></div></div>
+</div>
+</section>
+
+<section id="packsPanel" class="panel" hidden>
+<h2>3. Hai run manifest</h2>
+<p class="helper">Manifest là metadata vận hành; không thay thế prompt do từng Assistant tạo. Chạy hai lượt trong hai chat sạch riêng biệt.</p>
+<div class="grid" style="margin-top:15px">
+<div><div id="oldPack" class="pack"></div><div class="actions"><button class="btn" id="copyOldBtn" type="button">Sao chép OLD manifest</button></div></div>
+<div><div id="newPack" class="pack"></div><div class="actions"><button class="btn" id="copyNewBtn" type="button">Sao chép NEW manifest</button></div></div>
+</div>
+<div class="links">
+<a href="./content-renewal-assistant_old.html" target="_blank" rel="noopener">Mở OLD Assistant</a>
+<a href="./content-renewal-assistant.html" target="_blank" rel="noopener">Mở NEW Assistant</a>
+<a href="./content-renewal-ab-evaluator.html" target="_blank" rel="noopener">Mở A/B Evaluator</a>
+</div>
+</section>
+
+<section id="recordPanel" class="panel" hidden>
+<h2>4. Pair record để lưu cùng kết quả</h2>
+<p class="helper">Dòng TSV này có thể lưu cạnh TSV từ A/B Evaluator để truy vết source fingerprint và điều kiện chạy.</p>
+<div id="pairTsv" class="pack"></div>
+<div class="actions"><button class="btn" id="copyPairTsvBtn" type="button">Sao chép pair TSV</button></div>
+</section>
+<div id="live" class="live" aria-live="polite"></div>
+</main>
+<script>
+(()=>{'use strict';
+const $=id=>document.getElementById(id),KEY='ktd:renewal-ab-run-pack:v1';
+const ids=['repoSha','model','modelConfig','mode','articleTitle','sourceId','sourceInput'];
+let generatedSignature='',state=null;
+function normalizeMeta(v){return String(v??'').trim()}
+function bytes(v){return new TextEncoder().encode(v)}
+async function sha256Hex(v){const hash=await crypto.subtle.digest('SHA-256',bytes(v));return Array.from(new Uint8Array(hash),x=>x.toString(16).padStart(2,'0')).join('')}
+function currentSignature(){return ids.map(id=>$(id).value).join('\u241f')}
+function tsvCell(v){return String(v??'').replace(/[\t\r\n]+/g,' ').replace(/\s+/g,' ').trim()}
+function inputData(){return{repoSha:normalizeMeta($('repoSha').value),model:normalizeMeta($('model').value),modelConfig:normalizeMeta($('modelConfig').value),mode:$('mode').value,title:normalizeMeta($('articleTitle').value),sourceId:normalizeMeta($('sourceId').value),source:$('sourceInput').value}}
+function validate(d){const missing=[];if(!d.repoSha)missing.push('Repo commit SHA');if(!d.model)missing.push('Model');if(!d.modelConfig)missing.push('Model configuration');if(!d.title)missing.push('Tiêu đề bài');if(!d.sourceId)missing.push('Source / fixture ID');if(!d.source.trim())missing.push('Canonical HTML source');return missing}
+function manifest(workflow,d,sourceSha,pairId){const runId=`${pairId}-${workflow}`;return[`KTD CONTENT RENEWAL A/B RUN MANIFEST`,`PAIR ID: ${pairId}`,`RUN ID: ${runId}`,`WORKFLOW: ${workflow}`,`REPO COMMIT: ${d.repoSha}`,`MODEL: ${d.model}`,`MODEL CONFIG: ${d.modelConfig}`,`MODE: ${d.mode}`,`TITLE: ${d.title}`,`SOURCE ID: ${d.sourceId}`,`SOURCE SHA-256: ${sourceSha}`,`SOURCE BYTES UTF-8: ${bytes(d.source).length}`,`CONTROL: Run in a clean chat. Do not copy output between OLD and NEW. Do not edit source after fingerprinting.`,`ASSISTANT: ${workflow==='OLD'?'content-renewal-assistant_old.html':'content-renewal-assistant.html'}`].join('\n')}
+function pairTsv(d,sourceSha,pairId){const header=['Pair ID','Repo SHA','Model','Model config','Mode','Title','Source ID','Source SHA-256','Source bytes UTF-8','OLD Run ID','NEW Run ID'];const row=[pairId,d.repoSha,d.model,d.modelConfig,d.mode,d.title,d.sourceId,sourceSha,bytes(d.source).length,`${pairId}-OLD`,`${pairId}-NEW`];return header.map(tsvCell).join('\t')+'\n'+row.map(tsvCell).join('\t')}
+async function generate(){const d=inputData(),missing=validate(d),status=$('inputStatus');if(missing.length){status.className='status stale';status.textContent=`Thiếu: ${missing.join(', ')}.`;return}const btn=$('generateBtn');btn.disabled=true;btn.textContent='Đang tạo fingerprint...';try{const sourceSha=await sha256Hex(d.source);const pairMaterial=[d.repoSha,d.model,d.modelConfig,d.mode,d.title,d.sourceId,sourceSha].join('\n');const pairHash=await sha256Hex(pairMaterial);const pairId=`AB-${pairHash.slice(0,16).toUpperCase()}`;state={d,sourceSha,pairId,old:manifest('OLD',d,sourceSha,pairId),new:manifest('NEW',d,sourceSha,pairId),tsv:pairTsv(d,sourceSha,pairId)};generatedSignature=currentSignature();$('pairId').textContent=pairId;$('sourceSha').textContent=sourceSha;$('sourceStats').textContent=`${d.source.length.toLocaleString('vi-VN')} ký tự · ${bytes(d.source).length.toLocaleString('vi-VN')} bytes UTF-8`;$('runIds').textContent=`${pairId}-OLD · ${pairId}-NEW`;$('oldPack').textContent=state.old;$('newPack').textContent=state.new;$('pairTsv').textContent=state.tsv;$('resultPanel').hidden=false;$('packsPanel').hidden=false;$('recordPanel').hidden=false;$('copySourceBtn').disabled=false;status.className='status ready';status.textContent='READY — metadata và exact source đã được fingerprint. Chạy OLD/NEW từ pack này.';save();$('resultPanel').scrollIntoView({behavior:'smooth',block:'start'})}catch(e){console.error(e);status.className='status stale';status.textContent='Không tạo được SHA-256 trong browser này.'}finally{btn.disabled=false;btn.textContent='Tạo A/B Run Pack'}}
+function invalidate(){if(!generatedSignature)return;if(currentSignature()===generatedSignature)return;state=null;$('resultPanel').hidden=true;$('packsPanel').hidden=true;$('recordPanel').hidden=true;$('copySourceBtn').disabled=true;$('inputStatus').className='status stale';$('inputStatus').textContent='STALE — dữ liệu đã thay đổi sau khi fingerprint. Hãy tạo lại A/B Run Pack.'}
+async function copyText(text,msg){if(!text)return;try{await navigator.clipboard.writeText(text)}catch{const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove()}$('live').textContent=msg}
+function save(){try{const d={};ids.forEach(id=>d[id]=$(id).value);sessionStorage.setItem(KEY,JSON.stringify(d))}catch{}}
+function restore(){try{const raw=sessionStorage.getItem(KEY);if(!raw)return;const d=JSON.parse(raw);ids.forEach(id=>{if(d[id]!=null)$(id).value=d[id]})}catch{}}
+function clearAll(){if($('sourceInput').value&&!confirm('Xóa metadata và source đang nhập?'))return;ids.forEach(id=>{if(id==='mode')$(id).value='Normal';else if(id==='sourceId')$(id).value='editorial-content-renewal-promotional-resource-cases.html';else $(id).value=''});generatedSignature='';state=null;$('resultPanel').hidden=true;$('packsPanel').hidden=true;$('recordPanel').hidden=true;$('copySourceBtn').disabled=true;$('inputStatus').textContent='';try{sessionStorage.removeItem(KEY)}catch{}}
+$('generateBtn').addEventListener('click',generate);$('copySourceBtn').addEventListener('click',()=>copyText(state?.d.source,'Đã sao chép exact source đã fingerprint.'));$('copyOldBtn').addEventListener('click',()=>copyText(state?.old,'Đã sao chép OLD manifest.'));$('copyNewBtn').addEventListener('click',()=>copyText(state?.new,'Đã sao chép NEW manifest.'));$('copyPairTsvBtn').addEventListener('click',()=>copyText(state?.tsv,'Đã sao chép pair TSV.'));$('clearBtn').addEventListener('click',clearAll);ids.forEach(id=>$(id).addEventListener('input',()=>{invalidate();save()}));window.addEventListener('pagehide',save);restore();
+})();
+</script>
+</body>
+</html>
