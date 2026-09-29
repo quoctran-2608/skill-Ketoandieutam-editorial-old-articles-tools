@@ -20,7 +20,7 @@ html,body{margin:0;min-height:100%;font-family:system-ui,-apple-system,BlinkMacS
   try{
     const response=await fetch(source,{cache:'no-store'});
     if(!response.ok) throw new Error('HTTP '+response.status);
-    let html=await response.text();
+    let html=await response.text();\n    html=html.replaceAll('../ktd-editorial-content-renewal/content-renewal-assistant.html','../../chang2/');
     const base='<base href="'+baseHref+'">';
     if(/<head\b[^>]*>/i.test(html)){
       html=html.replace(/<head\b[^>]*>/i,match=>match+'\n'+base);
