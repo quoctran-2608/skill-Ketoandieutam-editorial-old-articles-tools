@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KTD Content Renewal — A/B Evidence Collector</title>
+<meta name="description" content="Thu nhận evidence OLD/NEW cho Content Renewal A/B. Local-only, không gọi AI/API, không tự chấm semantic.">
+<style>
+:root{--bg:#f4f7f5;--surface:#fff;--text:#17231d;--muted:#65736b;--border:#dbe5df;--green:#176b4d;--green-dark:#0f5138;--green-soft:#eef8f2;--amber:#996000;--amber-soft:#fff8e8;--red:#a33b2b;--red-soft:#fff3ef;--shadow:0 10px 28px rgba(19,54,40,.07);--radius:15px}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}.page{width:min(1180px,calc(100% - 32px));margin:auto;padding:32px 0 64px}header,.panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}header{padding:28px 30px;background:linear-gradient(135deg,#123f35,#176b4d);color:#fff;border:0}h1{margin:0;font-size:clamp(27px,4vw,36px);line-height:1.15}header p{max-width:900px;margin:10px 0 0;color:#dff3e9}.panel{margin-top:20px;padding:22px 24px}h2{margin:0 0 6px;font-size:21px}.helper{margin:0;color:var(--muted);font-size:14px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.meta-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:15px}.field label{display:block;margin-bottom:6px;font-size:12px;font-weight:800;color:#405048}.field input,.field select,.field textarea{width:100%;border:1.5px solid #cbd7d0;border-radius:10px;background:#fbfcfb;color:var(--text);font:inherit;outline:none}.field input,.field select{height:42px;padding:8px 10px}.field textarea{min-height:330px;padding:12px;resize:vertical;font:12.5px/1.5 "SFMono-Regular",Consolas,"Liberation Mono",monospace}.field input:focus,.field select:focus,.field textarea:focus{border-color:#63a98a;box-shadow:0 0 0 4px rgba(23,107,77,.09);background:#fff}.run{border:1px solid var(--border);border-radius:13px;padding:16px;background:#fafcfb}.run h3{margin:0 0 10px;font-size:18px}.check{display:flex;gap:9px;align-items:flex-start;margin:10px 0 12px;font-size:13px}.check input{margin-top:3px}.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}.btn{min-height:40px;padding:9px 14px;border:1px solid #d4ded8;border-radius:10px;background:#fff;color:#34443c;font:inherit;font-weight:800;cursor:pointer}.btn.primary{background:var(--green);border-color:var(--green);color:#fff}.btn:disabled{opacity:.46;cursor:not-allowed}.evidence{margin-top:12px;white-space:pre-wrap;overflow-wrap:anywhere;border:1px dashed #cbd8d1;border-radius:10px;padding:11px;background:#fff;font:11.5px/1.45 "SFMono-Regular",Consolas,monospace;max-height:430px;overflow:auto}.status{margin-top:10px;font-size:13px;font-weight:800}.ready{color:var(--green-dark)}.warn{color:var(--amber)}.bad{color:var(--red)}.notice{margin-top:14px;padding:11px 13px;border-radius:10px;background:var(--amber-soft);color:#744b00;font-size:13px}.links{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.links a{display:inline-flex;align-items:center;min-height:38px;padding:8px 12px;border-radius:9px;border:1px solid #cfe0d7;color:var(--green-dark);font-weight:800;text-decoration:none;background:var(--green-soft)}.live{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}@media(max-width:840px){.grid,.meta-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main class="page">
+<header><h1>Content Renewal — A/B Evidence Collector</h1><p>Thu nhận output thật từ hai chat sạch OLD/NEW, fingerprint từng output và sinh evidence file có thể commit. Công cụ không tự đánh giá semantic, không gọi AI/API và không thay batch verdict.</p></header>
+<section class="panel">
+<h2>1. Controlled metadata</h2>
+<p class="helper">Mặc định đang khóa Batch 001. Nếu dùng batch khác, tất cả metadata phải khớp Run Pack của batch đó.</p>
+<div class="meta-grid">
+<div class="field"><label>Batch ID</label><input id="batchId" value="KTD-RENEWAL-AB-BATCH-001"></div>
+<div class="field"><label>Pair ID</label><input id="pairId" value="AB-4A6A554F26C2E20F"></div>
+<div class="field"><label>Repo baseline SHA</label><input id="repoSha" value="bcc25f006460206cf7f47f246b1f3d0e154fc28b"></div>
+<div class="field"><label>Model</label><input id="model" value="GPT-5.6 Sol"></div>
+<div class="field"><label>Model configuration</label><input id="modelConfig" value="ChatGPT default/current configuration; identical for OLD and NEW"></div>
+<div class="field"><label>Mode</label><select id="mode"><option>Normal</option><option>Verified</option></select></div>
+<div class="field"><label>Article title</label><input id="title" value="Fixture: Promotional Cleanup + Resource Migration"></div>
+<div class="field"><label>Source ID</label><input id="sourceId" value="editorial-content-renewal-promotional-resource-cases.html"></div>
+<div class="field"><label>Source SHA-256</label><input id="sourceSha" value="b6f1dc56f58f776e6294f2b25d1d1a077088fd2169339baadb23e71598e55a99"></div>
+</div>
+<div class="notice">Collector chỉ xác nhận integrity của phần bạn dán và self-attestation “chat sạch”. Nó không thể chứng minh model thật sự chạy trong chat sạch, cũng không thay thế review/editor scorecard.</div>
+</section>
+<section class="panel">
+<h2>2. Dán output từ hai chat sạch</h2>
+<p class="helper">Dán nguyên final response cần làm evidence. Không chỉnh sửa nội dung giữa lúc copy từ chat và lúc tạo evidence.</p>
+<div class="grid" style="margin-top:15px">
+<div class="run"><h3>OLD</h3><div class="field"><label>Run ID</label><input id="oldRunId" value="AB-4A6A554F26C2E20F-OLD"></div><label class="check"><input id="oldClean" type="checkbox"><span>Tôi xác nhận output này đến từ một chat sạch riêng cho OLD và không copy output NEW vào chat đó.</span></label><div class="field"><label>OLD output</label><textarea id="oldOutput" spellcheck="false" placeholder="Dán final HTML + QA/report/resource evidence của OLD..."></textarea></div><div class="actions"><button class="btn primary" id="oldGenerate" type="button">Tạo OLD evidence</button><button class="btn" id="oldCopy" type="button" disabled>Sao chép OLD evidence</button></div><div id="oldStatus" class="status warn">PENDING</div><div id="oldEvidence" class="evidence" hidden></div></div>
+<div class="run"><h3>NEW</h3><div class="field"><label>Run ID</label><input id="newRunId" value="AB-4A6A554F26C2E20F-NEW"></div><label class="check"><input id="newClean" type="checkbox"><span>Tôi xác nhận output này đến từ một chat sạch riêng cho NEW và không copy output OLD vào chat đó.</span></label><div class="field"><label>NEW output</label><textarea id="newOutput" spellcheck="false" placeholder="Dán final HTML + QA/report/resource evidence của NEW..."></textarea></div><div class="actions"><button class="btn primary" id="newGenerate" type="button">Tạo NEW evidence</button><button class="btn" id="newCopy" type="button" disabled>Sao chép NEW evidence</button></div><div id="newStatus" class="status warn">PENDING</div><div id="newEvidence" class="evidence" hidden></div></div>
+</div>
+</section>
+<section class="panel"><h2>3. Handoff</h2><p class="helper">Khi cả hai evidence đã được commit đúng path, Batch 001 mới đủ điều kiện chuyển sang <code>READY_FOR_SCORING</code>. Collector không tự thay đổi file repo.</p><div class="links"><a href="./content-renewal-ab-run-pack.html" target="_blank" rel="noopener">Mở Run Pack</a><a href="./content-renewal-ab-evaluator.html" target="_blank" rel="noopener">Mở A/B Evaluator</a></div></section>
+<div id="live" class="live" aria-live="polite"></div>
+</main>
+<script>
+(()=>{'use strict';
+const $=id=>document.getElementById(id),KEY='ktd:renewal-ab-evidence-collector:v1',enc=new TextEncoder();
+const metaIds=['batchId','pairId','repoSha','model','modelConfig','mode','title','sourceId','sourceSha'];
+let evidence={OLD:'',NEW:''};
+async function sha256(text){const hash=await crypto.subtle.digest('SHA-256',enc.encode(text));return Array.from(new Uint8Array(hash),b=>b.toString(16).padStart(2,'0')).join('')}
+function clean(v){return String(v??'').trim()}
+function meta(){const d={};for(const id of metaIds)d[id]=clean($(id).value);return d}
+function markers(text){return{finalHtml:/<article\b|<!doctype\s+html|FINAL HTML|CANONICAL HTML/i.test(text),qa:/QA REPORT|QA RESULT|QUALITY ASSURANCE|ĐẠT —|KHÔNG ĐẠT/i.test(text),resource:/RESOURCE \/ DOWNLOAD RECONCILIATION|RESOURCE RECONCILIATION/i.test(text),backlog:/RESOURCE MIGRATION BACKLOG|TSV FOR SHEET/i.test(text)}}
+function mark(v){return v?'PRESENT':'MISSING'}
+function validateBase(d){const missing=Object.entries(d).filter(([,v])=>!v).map(([k])=>k);if(missing.length)return `Thiếu metadata: ${missing.join(', ')}`;if(!/^[a-f0-9]{64}$/i.test(d.sourceSha))return 'Source SHA-256 không hợp lệ.';return ''}
+async function build(workflow){const lower=workflow.toLowerCase(),d=meta(),baseErr=validateBase(d),runId=clean($(`${lower}RunId`).value),output=$(`${lower}Output`).value,confirmed=$(`${lower}Clean`).checked,status=$(`${lower}Status`);if(baseErr){status.className='status bad';status.textContent=baseErr;return}if(!runId){status.className='status bad';status.textContent='Thiếu Run ID.';return}if(!runId.startsWith(d.pairId+'-')||!runId.endsWith('-'+workflow)){status.className='status bad';status.textContent='Run ID không khớp Pair ID/workflow.';return}if(!confirmed){status.className='status bad';status.textContent='Chưa xác nhận chat sạch.';return}if(!output.trim()){status.className='status bad';status.textContent='Chưa có output.';return}const outSha=await sha256(output),m=markers(output),capturedAt=new Date().toISOString();const header=[`KTD-RENEWAL-AB-EVIDENCE-V1`,`Evidence status: CAPTURED_UNSCORED`,`Batch ID: ${d.batchId}`,`Pair ID: ${d.pairId}`,`Run ID: ${runId}`,`Workflow: ${workflow}`,`Repo commit: ${d.repoSha}`,`Model: ${d.model}`,`Model configuration: ${d.modelConfig}`,`Mode: ${d.mode}`,`Article title: ${d.title}`,`Source ID: ${d.sourceId}`,`Source SHA-256: ${d.sourceSha}`,`Clean chat confirmed: YES`,`Output SHA-256: ${outSha}`,`Output bytes UTF-8: ${enc.encode(output).length}`,`Output characters: ${output.length}`,`Marker Final HTML: ${mark(m.finalHtml)}`,`Marker QA report: ${mark(m.qa)}`,`Marker Resource reconciliation: ${mark(m.resource)}`,`Marker Sheet backlog: ${mark(m.backlog)}`,`Captured at: ${capturedAt}`,`Semantic score: NOT SCORED`,`--- RAW OUTPUT START ---`].join('\n');evidence[workflow]=header+'\n'+output;$(`${lower}Evidence`).textContent=evidence[workflow];$(`${lower}Evidence`).hidden=false;$(`${lower}Copy`).disabled=false;status.className='status ready';status.textContent=`CAPTURED_UNSCORED · SHA-256 ${outSha.slice(0,12)}… · structural markers chỉ là presence check`;save();$('live').textContent=`Đã tạo ${workflow} evidence.`}
+async function copy(workflow){const text=evidence[workflow];if(!text)return;try{await navigator.clipboard.writeText(text)}catch{const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove()}$('live').textContent=`Đã sao chép ${workflow} evidence.`}
+function invalidate(workflow){if(!evidence[workflow])return;evidence[workflow]='';const lower=workflow.toLowerCase();$(`${lower}Evidence`).hidden=true;$(`${lower}Copy`).disabled=true;$(`${lower}Status`).className='status warn';$(`${lower}Status`).textContent='STALE — input đã đổi, hãy tạo lại evidence.'}
+function save(){try{const d={};for(const id of [...metaIds,'oldRunId','newRunId','oldOutput','newOutput'])d[id]=$(id).value;d.oldClean=$('oldClean').checked;d.newClean=$('newClean').checked;sessionStorage.setItem(KEY,JSON.stringify(d))}catch{}}
+function restore(){try{const raw=sessionStorage.getItem(KEY);if(!raw)return;const d=JSON.parse(raw);for(const id of [...metaIds,'oldRunId','newRunId','oldOutput','newOutput'])if(d[id]!=null)$(id).value=d[id];$('oldClean').checked=!!d.oldClean;$('newClean').checked=!!d.newClean}catch{}}
+$('oldGenerate').addEventListener('click',()=>build('OLD'));$('newGenerate').addEventListener('click',()=>build('NEW'));$('oldCopy').addEventListener('click',()=>copy('OLD'));$('newCopy').addEventListener('click',()=>copy('NEW'));
+for(const id of metaIds){$(id).addEventListener('input',()=>{invalidate('OLD');invalidate('NEW');save()});$(id).addEventListener('change',()=>{invalidate('OLD');invalidate('NEW');save()})}
+for(const workflow of ['OLD','NEW']){const lower=workflow.toLowerCase();for(const id of [`${lower}RunId`,`${lower}Output`,`${lower}Clean`]){$(id).addEventListener('input',()=>{invalidate(workflow);save()});$(id).addEventListener('change',()=>{invalidate(workflow);save()})}}
+restore();
+})();
+</script>
+</body>
+</html>

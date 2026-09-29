@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bộ lệnh Làm Mới Nội Dung — Kế Toán Diệu Tâm</title>
+<style>
+body{margin:0;background:#f4f7f6;color:#1d2923;font-family:Arial,"Segoe UI",sans-serif;line-height:1.55}.page{width:min(980px,calc(100% - 28px));margin:auto;padding:28px 0 60px}.card,header{margin-top:14px;padding:18px 20px;background:#fff;border:1px solid #dce5df;border-radius:12px}header{margin-top:0}h1{margin:0;color:#125a43}h2{margin:0 0 6px;font-size:18px}.note{color:#667069}.prompt{white-space:pre-wrap;overflow-wrap:anywhere;background:#f7f9f8;border:1px solid #e3e9e5;border-radius:9px;padding:14px;font:12.5px/1.6 Consolas,"Courier New",monospace}
+</style>
+</head>
+<body>
+<main class="page">
+<header>
+<h1>Bộ lệnh Làm Mới Nội Dung</h1>
+<p class="note">Bản 1.6.0 khóa phạm vi công khai, truy vết các claim chuyên môn trọng yếu về Dxx và kiểm coverage trước khi cho PASS. Không kiểm toán mọi chi tiết; “Làm rõ căn cứ khi cần” và Bước 6 vẫn tối đa một lần.</p>
+</header>
+
+<section class="card"><h2>Bước 1 — Kiểm tra bài hiện tại</h2><pre class="prompt" data-step="1">Bạn đang thực hiện BƯỚC 1 — KIỂM TRA BÀI HIỆN TẠI của KTD Editorial Content Renewal v1.6.0.
+
+NGÔN NGỮ ĐẦU RA — BẮT BUỘC:
+- Báo cáo bằng tiếng Việt rõ ràng, dễ hiểu.
+- Chỉ giữ mã Sxx/Rxx/Cxx/Pxx/E## khi thật sự cần nối bước.
+
+MỤC TIÊU TOÀN QUY TRÌNH:
+Làm mới bài đủ chính xác và đủ an toàn để đăng cho Kế Toán Diệu Tâm. Không cố chứng nhận đúng tuyệt đối mọi chi tiết. Tăng độ chính xác bằng cách khóa đúng PHẠM VI CÔNG KHAI và các QUYẾT ĐỊNH CHUYÊN MÔN TRỌNG YẾU mà nếu sai sẽ ảnh hưởng thực hành hoặc uy tín.
+
+1. CHỈ COI LÀ CÓ THỂ CHẶN ĐĂNG NẾU VẤN ĐỀ CÓ KHẢ NĂNG ĐÁNG KỂ:
+- làm người đọc áp dụng sai;
+- làm sai văn bản/chế độ/đối tượng/fact pattern/thời kỳ áp dụng;
+- làm tiêu đề, intro hoặc scope box hứa rộng hơn căn cứ có thể bảo vệ;
+- làm sai kết luận chính mà bài trực tiếp dạy;
+- làm sai công thức, mức/tỷ lệ/ngưỡng/thời hạn, phân loại, tài khoản hoặc treatment CHÍNH;
+- bỏ điều kiện/ngoại lệ trọng yếu khiến quy tắc dễ bị áp sai;
+- làm sai biểu mẫu/bảng/nội dung chính thức;
+- tạo mâu thuẫn chuyên môn rõ giữa phần giải thích, công thức, ví dụ, warning, bảng hoặc kết luận.
+
+2. KHÔNG TỰ ĐỘNG CHẶN VÌ CHI TIẾT PHỤ:
+112/331, phương thức thanh toán, tên giả định, tài khoản đối ứng phụ, bước trung gian không phải mục tiêu bài, wording, emphasis nhỏ hoặc supporting detail có thể viết trung tính.
+
+3. ĐỌC TOÀN BỘ:
+- tiêu đề hiện tại;
+- Canonical HTML sau Chặng 1;
+- inventory liên kết/hình ảnh/tài nguyên nếu có;
+- SKILL.md hiện hành.
+Nếu thiếu tiêu đề: ghi `THIẾU TIÊU ĐỀ HIỆN TẠI — KHÔNG THỂ KIỂM TRA` rồi dừng.
+
+A. BẢNG PHẠM VI CÔNG KHAI SƠ BỘ — Sxx
+Chỉ ghi những phạm vi mà bài THỰC SỰ công bố hoặc dựa vào để hướng dẫn người đọc, lấy từ title, intro, scope box, câu “áp dụng cho...”, thời kỳ, đối tượng, chế độ/văn bản được nêu như căn cứ điều chỉnh.
+Mỗi Sxx ghi:
+- phạm vi/đối tượng/thời kỳ/chế độ hoặc lớp quy định;
+- bằng chứng trong bài cho thấy phạm vi đó được công bố;
+- vai trò sơ bộ: `CÓ THỂ CHI PHỐI QUYẾT ĐỊNH` hoặc `CHỈ BỐI CẢNH/THAM KHẢO`.
+
+Không biến mọi nguồn được nhắc tên thành một phạm vi chi phối. Một citation hoặc tài liệu tham khảo không tự động có nghĩa nó điều chỉnh mọi decision trong bài.
+Các từ hứa rộng như “hiện hành”, “áp dụng chung”, “mọi doanh nghiệp”, “theo quy định năm ...” phải được coi là tín hiệu phạm vi công khai cần kiểm chứng nếu có thể ảnh hưởng treatment.
+
+B. CORE — Cxx
+Chỉ gắn CORE khi mất/sai nội dung đó sẽ làm hỏng lời hứa chính của bài hoặc khiến độc giả áp dụng sai đáng kể. Các phần còn lại là SUPPORTING.
+Không biến mọi câu, mọi bút toán, mọi số tài khoản, mọi ví dụ thành CORE.
+
+C. HÀNG ĐỢI KIỂM CHỨNG — Rxx
+Chỉ tạo Rxx cho quyết định có khả năng trọng yếu, ví dụ:
+- phạm vi / đối tượng / thời kỳ / hiệu lực;
+- cách tính / công thức / mức / tỷ lệ / ngưỡng / thời hạn;
+- phân loại / ghi nhận / tài khoản hoặc route chính;
+- điều kiện / ngoại lệ / tương tác giữa các quy tắc;
+- thủ tục / trình tự chính;
+- biểu mẫu / nội dung chính thức;
+- cùng một decision nhưng có dấu hiệu cụ thể rằng treatment có thể khác giữa các Sxx thực sự thuộc article scope.
+
+KHÔNG tạo Rxx chỉ vì “có thể còn một ngoại lệ/chế độ khác”. Muốn tạo Rxx phải nêu được claim hoặc rủi ro cụ thể + vì sao nó có thể ảnh hưởng đáng kể.
+
+D. COVERAGE CORE → Rxx
+Với mỗi Cxx có nội dung chuẩn tắc/thực hành trọng yếu, phải chỉ ra Rxx nào sẽ kiểm chứng. Cxx thuần giải thích/diễn đạt có thể ghi `KHÔNG CẦN Rxx — lý do`.
+Mục đích là tránh bỏ sót một formula/rule chính chỉ vì nó không được tạo Rxx.
+
+E. VÍ DỤ — E##
+Với mỗi ví dụ: mục đích giảng dạy, CORE phục vụ, phần nào phải đúng, phần nào có thể đơn giản hóa an toàn.
+
+F. CẤU TRÚC/TRÌNH BÀY — Pxx
+Theo dõi heading, bảng, công thức, warning/example, bút toán, hình ảnh/tài nguyên có vai trò dạy học. Minor primitive drift không phải blocker nếu nghĩa và vai trò còn nguyên.
+
+G. QUẢNG BÁ/TÀI NGUYÊN
+Quảng bá thuần túy có thể bỏ; phần hữu ích phải giữ; không tự tạo URL/file.
+
+H. RỦI RO CẦN XEM LẠI
+Chỉ hai nhóm:
+1. `CÓ THỂ CHẶN ĐĂNG` — rủi ro trọng yếu cụ thể;
+2. `CÓ THỂ ĐƠN GIẢN HÓA` — chi tiết phụ không cần nghiên cứu sâu.
+
+Cuối cùng ghi đúng một dòng:
+CẦN KIỂM CHỨNG: CÓ
+hoặc
+CẦN KIỂM CHỨNG: KHÔNG
+
+Sau đó DỪNG.</pre></section>
+
+<section class="card"><h2>Bước 2 — Kiểm chứng, khóa phạm vi và quyết định trọng yếu</h2><pre class="prompt" data-step="2">Bạn đang thực hiện BƯỚC 2 — KIỂM CHỨNG NỘI DUNG TRỌNG YẾU của KTD Editorial Content Renewal v1.6.0.
+
+NGÔN NGỮ ĐẦU RA:
+Toàn bộ báo cáo bằng tiếng Việt. Mã kỹ thuật chỉ dùng khi cần nối bước.
+
+Chỉ chạy khi Bước 1 trả `CẦN KIỂM CHỨNG: CÓ` hoặc biên tập viên yêu cầu. Chưa lập kế hoạch, chưa viết bài.
+
+MỤC TIÊU:
+Khóa một số ít QUYẾT ĐỊNH CHUYÊN MÔN TRỌNG YẾU và bảo đảm mỗi decision được reconcile với đúng PHẠM VI CÔNG KHAI mà bài thật sự hứa. Không chứng minh mọi chi tiết phụ, không tạo ma trận theo mọi nguồn có thể tồn tại.
+
+1. NGUỒN
+- Với pháp luật/kế toán Việt Nam, ưu tiên nguồn chính thức/cơ quan có thẩm quyền.
+- Kiểm hiệu lực, sửa đổi/thay thế khi điều đó ảnh hưởng kết luận.
+- Không dùng snippet tìm kiếm làm căn cứ cuối cho kết luận trọng yếu.
+- Nguồn chính xác cho đúng subject/fact pattern/phạm vi/thời kỳ ưu tiên hơn summary cũ.
+- Không chuyển điều kiện, ngoại lệ hoặc treatment từ điều khoản lân cận sang điều khoản đang xét nếu không có căn cứ nối.
+
+2. XÁC NHẬN `BẢNG PHẠM VI CÔNG KHAI — Sxx`
+Từ Sxx sơ bộ của Bước 1, xác nhận chỉ những phạm vi thực sự thuộc lời hứa công khai của bài.
+Mỗi Sxx ghi:
+- `Sxx`;
+- phạm vi/đối tượng/thời kỳ/chế độ hoặc lớp quy định;
+- vai trò trong bài;
+- trạng thái: `TRONG PHẠM VI` hoặc `CHỈ BỐI CẢNH/THAM KHẢO`;
+- nếu `TRONG PHẠM VI`, nhóm decision nào Sxx có thể chi phối.
+
+Một nguồn được liệt kê không mặc nhiên chi phối mọi Dxx. Ngược lại, nếu title/intro/scope box công bố một phạm vi thì không được lờ đi phạm vi đó chỉ để làm bài dễ viết.
+
+3. TẠO `BẢNG QUYẾT ĐỊNH CHUYÊN MÔN TRỌNG YẾU — Dxx`
+Không có quota. Chỉ tạo Dxx khi sai decision đó có khả năng ảnh hưởng đáng kể đến thực hành, kết luận chính hoặc uy tín.
+Không biến từng câu hay từng bút toán thành Dxx.
+
+Với mỗi Dxx ghi đủ:
+- `Dxx`;
+- `Quyết định chuyên môn` — câu hỏi thực sự phải chốt;
+- `CORE liên quan`;
+- `Căn cứ chính` — nguồn/Điều-Khoản-Điểm hoặc căn cứ có thẩm quyền phù hợp;
+- `COVERAGE THEO Sxx` — với từng Sxx `TRONG PHẠM VI` có khả năng chi phối decision này, bắt buộc phân loại một trong:
+  * `CHI PHỐI — CÙNG KẾT LUẬN`;
+  * `CHI PHỐI — KHÁC KẾT LUẬN`;
+  * `CHI PHỐI — CÓ ĐIỀU KIỆN/NGOẠI LỆ`;
+  * `KHÔNG CHI PHỐI Dxx — lý do cụ thể`;
+- `Kết luận theo từng phạm vi thực sự chi phối`;
+- `Quan hệ cuối` — chọn đúng MỘT:
+  * `DÙNG CHUNG`;
+  * `PHẢI TÁCH`;
+  * `PHẢI KÈM ĐIỀU KIỆN/NGOẠI LỆ`;
+  * `CÓ THỂ VIẾT TRUNG TÍNH`;
+- `Chỉ dẫn cho bài viết`;
+- `COVERAGE: ĐỦ` hoặc `COVERAGE: THIẾU`;
+- `Trạng thái`: `ĐỦ CĂN CỨ` hoặc `CẦN LÀM RÕ CĂN CỨ`.
+
+4. QUY TẮC COVERAGE — BẮT BUỘC TRƯỚC KHI READY
+Một Dxx chỉ được ghi `COVERAGE: ĐỦ` khi TẤT CẢ Sxx `TRONG PHẠM VI` có khả năng chi phối decision đó đã được phân loại rõ là chi phối theo treatment nào hoặc không chi phối vì lý do cụ thể.
+Không được ghi `ĐỦ CĂN CỨ` nếu `COVERAGE: THIẾU`.
+
+- `DÙNG CHUNG`: mọi Sxx thực sự chi phối cho cùng kết luận trọng yếu; một phạm vi duy nhất cũng có thể dùng loại này.
+- `PHẢI TÁCH`: có ít nhất hai phạm vi thực sự chi phối cho kết luận trọng yếu khác nhau; Final phải tách rõ.
+- `PHẢI KÈM ĐIỀU KIỆN/NGOẠI LỆ`: treatment nền có thể giống nhưng điều kiện/ngoại lệ làm thay đổi cách áp dụng đáng kể.
+- `CÓ THỂ VIẾT TRUNG TÍNH`: exact detail không phải teaching target và có thể diễn đạt tổng quát mà không làm sai doctrine.
+
+KHÔNG được chọn `PHẢI TÁCH`, thêm Sxx hay mở blocker chỉ vì tưởng tượng. Phải có khác biệt/phạm vi cụ thể, có căn cứ và nằm trong lời hứa của bài.
+
+5. COVERAGE CORE → Dxx — CHỐNG BỎ SÓT
+Rà lại các Cxx có nội dung chuẩn tắc/thực hành trọng yếu. Mỗi Cxx phải:
+- map tới ít nhất một Dxx đủ căn cứ; hoặc
+- ghi `KHÔNG CẦN Dxx` kèm lý do vì nội dung đó không phải material teaching claim.
+Nếu một formula/rule/rate/threshold/deadline/classification/procedure/exception chính chưa có Dxx, phải tạo Dxx ngay trong lượt này thay vì để QA cuối mới phát hiện.
+
+6. THU HẸP PHẠM VI — CHỈ LÀ LỐI THOÁT AN TOÀN
+Nếu một Sxx quá rộng hoặc không đủ căn cứ:
+- chỉ được đề xuất `THU HẸP PHẠM VI CÔNG KHAI` khi việc thu hẹp không phá lời hứa cốt lõi/nghiệp vụ chính của bài;
+- phải nêu chính xác title/intro/scope statement nào cần thu hẹp;
+- không được âm thầm bỏ một chế độ/đối tượng mà bài đang hứa phục vụ.
+Nếu thu hẹp sẽ làm hỏng CORE hoặc ý định chính → cần làm rõ căn cứ hoặc chuyển biên tập chuyên môn thủ công.
+
+7. FULL ROUTE / TÀI KHOẢN / CHI TIẾT TRUNG GIAN
+Chỉ khóa đầy đủ khi route/tài khoản/trạng thái nguồn là teaching target hoặc khác biệt của nó làm thay đổi treatment đáng kể.
+Tài khoản đối ứng phụ, phương thức thanh toán hoặc bước minh họa không trọng yếu → ưu tiên `CÓ THỂ VIẾT TRUNG TÍNH`.
+
+8. QUÉT THEO CỤM QUYẾT ĐỊNH
+Nếu phát hiện một lỗi trọng yếu về cùng loại decision, rà các CORE liên quan cùng loại trong một lượt để tránh bóc lỗi từng vòng. Không mở rộng sang chủ đề ngoài article scope.
+
+9. OFFICIAL CONTENT
+Biểu mẫu, bảng chính thức, statutory wording hoặc formal template được phép giữ gần nguyên văn khi fidelity cần thiết. Không tạo “khác biệt giả” chỉ để rewrite.
+
+10. GIỚI HẠN `LÀM RÕ CĂN CỨ KHI CẦN`
+Mỗi bài tối đa một lần.
+- Nếu chưa dùng và còn Dxx trọng yếu `COVERAGE: THIẾU` hoặc `CẦN LÀM RÕ CĂN CỨ` → cho phép dùng nhánh phụ.
+- Nếu đã dùng mà vẫn thiếu coverage/căn cứ trọng yếu → không lặp; kết luận `CẦN BIÊN TẬP CHUYÊN MÔN THỦ CÔNG`.
+
+ĐẦU RA:
+A. BẢNG PHẠM VI CÔNG KHAI — Sxx
+B. BẢNG QUYẾT ĐỊNH CHUYÊN MÔN TRỌNG YẾU — Dxx
+C. COVERAGE CORE → Dxx
+D. CÁC CHI TIẾT CÓ THỂ ĐƠN GIẢN HÓA AN TOÀN
+E. BLOCKER/COVERAGE GAP TRỌNG YẾU CÒN LẠI — nếu có
+F. ĐỀ XUẤT THU HẸP PHẠM VI CÔNG KHAI — nếu thật sự cần và an toàn
+
+Cuối cùng ghi đúng một trạng thái:
+TRẠNG THÁI KIỂM CHỨNG: ĐỦ ĐỂ LẬP KẾ HOẠCH
+hoặc
+TRẠNG THÁI KIỂM CHỨNG: CẦN LÀM RÕ CĂN CỨ
+hoặc
+TRẠNG THÁI KIỂM CHỨNG: CẦN BIÊN TẬP CHUYÊN MÔN THỦ CÔNG
+
+Nếu `CẦN LÀM RÕ CĂN CỨ`, nêu Sxx/Dxx cần làm rõ và DỪNG. Không viết bài.</pre></section>
+
+<section class="card"><h2>Bước 3 — Lập kế hoạch làm mới</h2><pre class="prompt" data-step="3">Bạn đang thực hiện BƯỚC 3 — LẬP KẾ HOẠCH LÀM MỚI của KTD Editorial Content Renewal v1.6.0.
+
+NGÔN NGỮ ĐẦU RA: tiếng Việt rõ ràng.
+
+Bước này KHÔNG mở research mới. Dùng Bước 1, Bước 2, Bảng Sxx, Bảng Dxx và kết quả `Làm rõ căn cứ khi cần` nếu đã có.
+
+MỤC TIÊU:
+Biến phạm vi + quyết định đã khóa thành kế hoạch có thể viết ngay, không biến Plan thành một cuộc kiểm toán thứ hai.
+
+1. HỢP ĐỒNG PHẠM VI CÔNG KHAI
+Chốt title/intro/scope box dự kiến sao cho KHÔNG hứa rộng hơn Bảng Sxx và Dxx có coverage đầy đủ.
+Nếu Bước 2 cho phép `THU HẸP PHẠM VI CÔNG KHAI`, Plan phải cập nhật đồng bộ title/intro/scope statement; không được chỉ thu hẹp âm thầm trong body.
+Không thu hẹp nếu làm mất CORE hoặc trái ý định chính của bài.
+
+2. CORE
+Giữ đầy đủ CORE trọng yếu. SUPPORTING có thể gộp/rút gọn/bỏ khi không làm mất bài học chính.
+
+3. ÁNH XẠ Sxx + Dxx → BÀI VIẾT
+Với mỗi Dxx thực sự xuất hiện trong Final HTML, ghi:
+- Sxx nào chi phối;
+- section/CORE liên quan;
+- public wording/treatment được phép;
+- các bề mặt cần nhất quán: intro/scope statement | phần giải thích | công thức | ví dụ | warning/note | bảng | tóm tắt/kết luận.
+
+Quy tắc bắt buộc:
+- `DÙNG CHUNG` → có thể viết chung, nhưng không làm câu chữ rộng hơn các Sxx đã coverage;
+- `PHẢI TÁCH` → phải tách rõ theo đúng phạm vi/chế độ/đối tượng/thời kỳ;
+- `PHẢI KÈM ĐIỀU KIỆN/NGOẠI LỆ` → điều kiện/ngoại lệ trọng yếu phải ở đủ gần nơi người đọc áp dụng;
+- `CÓ THỂ VIẾT TRUNG TÍNH` → ưu tiên diễn đạt tổng quát, không hard-code detail phụ.
+
+4. MATERIAL CLAIM TRACEABILITY
+Mọi formula/rule/rate/threshold/deadline/classification/procedure/exception trọng yếu dự kiến đưa vào Final phải map được về Dxx.
+Plan KHÔNG được tự thêm một material teaching claim mới không có Dxx. Nếu chi tiết không cần thiết, bỏ hoặc viết supporting trung tính.
+
+5. VÍ DỤ
+Giữ mục đích dạy học và số liệu trọng yếu. Chi tiết phụ chưa exact có thể diễn đạt tổng quát, dùng giả định minh họa rõ nếu không đổi doctrine, hoặc bỏ.
+
+6. NHẤT QUÁN XUYÊN BÀI
+Nếu một Dxx xuất hiện ở nhiều nơi, Plan phải yêu cầu cùng treatment và đúng scope ở tất cả nơi liên quan. Không để body nói A, formula nói B, example/table nói C.
+
+7. TRÌNH BÀY / OFFICIAL CONTENT / QUẢNG BÁ
+Giữ hierarchy và khối có vai trò dạy học. Official form/table/template ưu tiên fidelity. Dọn quảng bá theo Audit. Không tự tạo URL/file.
+
+8. QUY TẮC SẴN SÀNG
+Chỉ trả `KHÔNG` khi:
+- còn Dxx trọng yếu `COVERAGE: THIẾU` hoặc chưa đủ căn cứ;
+- phạm vi công khai dự kiến rộng hơn coverage đã khóa;
+- hồ sơ có mâu thuẫn trực tiếp cùng Dxx/cùng scope mà Plan không thể đồng thời thực hiện.
+
+KHÔNG tự tạo blocker mới chỉ vì một khả năng khác, detail phụ chưa exact hoặc có thể viết kỹ hơn.
+
+ĐẦU RA:
+A. KẾ HOẠCH TIÊU ĐỀ + PHẠM VI CÔNG KHAI
+B. CORE TRỌNG YẾU CẦN GIỮ
+C. ÁNH XẠ Sxx + Dxx → SECTION/BỀ MẶT
+D. MATERIAL CLAIM TRACEABILITY DỰ KIẾN
+E. KẾ HOẠCH VÍ DỤ
+F. SUPPORTING ĐƯỢC GỘP/RÚT GỌN
+G. KẾ HOẠCH TRÌNH BÀY/TÀI NGUYÊN
+H. ĐIỂM ĐƯỢC PHÉP ĐƠN GIẢN HÓA AN TOÀN
+
+Cuối cùng ghi:
+SẴN SÀNG LÀM MỚI: CÓ
+hoặc
+SẴN SÀNG LÀM MỚI: KHÔNG
+
+Nếu KHÔNG:
+- nếu `Làm rõ căn cứ khi cần` chưa dùng và nguyên nhân là thiếu coverage/căn cứ trọng yếu → `HƯỚNG TIẾP THEO: DÙNG “LÀM RÕ CĂN CỨ KHI CẦN” MỘT LẦN, SAU ĐÓ CHẠY LẠI BƯỚC 2 → BƯỚC 3`;
+- nếu nhánh đã dùng → `HƯỚNG TIẾP THEO: CẦN BIÊN TẬP CHUYÊN MÔN THỦ CÔNG`.
+
+Sau đó DỪNG.</pre></section>
+
+<section class="card"><h2>Bước 4 — Viết lại bài</h2><pre class="prompt" data-step="4">Bạn đang thực hiện BƯỚC 4 — VIẾT LẠI BÀI của KTD Editorial Content Renewal v1.6.0.
+
+NGÔN NGỮ ĐẦU RA:
+- Nếu viết được: chỉ xuất tiêu đề + HTML.
+- Nếu Plan tự mâu thuẫn trực tiếp: giải thích ngắn bằng tiếng Việt theo trạng thái bên dưới.
+
+ĐIỀU KIỆN:
+Chỉ chạy khi Plan gần nhất ghi `SẴN SÀNG LÀM MỚI: CÓ`.
+
+NGUYÊN TẮC QUAN TRỌNG NHẤT:
+BƯỚC 4 LÀ NGƯỜI VIẾT, KHÔNG PHẢI MỘT VÒNG RESEARCH HAY KIỂM TOÁN CĂN CỨ MỚI.
+Hãy tin Bảng Sxx + Dxx và Plan đã sẵn sàng.
+
+1. GIỮ ĐÚNG PHẠM VI CÔNG KHAI
+Title, intro, scope box, heading, bảng tóm tắt và kết luận không được hứa rộng hơn Sxx/Dxx đã coverage.
+Nếu Plan đã thu hẹp phạm vi an toàn, phải phản ánh đồng bộ ở mọi bề mặt công khai liên quan.
+
+2. TUÂN THỦ BẢNG QUYẾT ĐỊNH TRỌNG YẾU
+- `DÙNG CHUNG`: có thể trình bày một quy tắc chung trong đúng phạm vi đã khóa.
+- `PHẢI TÁCH`: bắt buộc tách theo đúng Sxx; không universalize một treatment riêng thành treatment chung.
+- `PHẢI KÈM ĐIỀU KIỆN/NGOẠI LỆ`: giữ điều kiện/ngoại lệ đủ gần nơi áp dụng.
+- `CÓ THỂ VIẾT TRUNG TÍNH`: dùng wording an toàn, không hard-code detail phụ không cần thiết.
+
+3. MATERIAL CLAIM TRACEABILITY
+Không tự thêm một formula/rule/rate/threshold/deadline/classification/procedure/exception trọng yếu mới nếu Plan không map được nó về Dxx.
+Nếu một chi tiết mới chỉ giúp văn phong/minh họa nhưng không cần cho CORE, hãy bỏ hoặc viết ở mức supporting trung tính.
+
+4. NHẤT QUÁN XUYÊN BÀI
+Một Dxx phải cùng nghĩa và đúng scope ở phần giải thích, công thức, ví dụ, warning/note, bảng và tóm tắt/kết luận nếu các bề mặt đó cùng đề cập.
+Không được sửa một nơi nhưng để nơi khác lặp treatment cũ.
+
+5. KHÔNG TỰ CHẶN VÌ CHI TIẾT PHỤ
+Không dừng chỉ vì tài khoản đối ứng phụ, phương thức thanh toán, route phụ, supporting detail hoặc wording chưa khóa tuyệt đối nếu Plan cho phép viết trung tính.
+
+6. KHÔNG ĐƯỢC BỊA CHUYÊN MÔN TRỌNG YẾU
+Không invent rule, exception, phạm vi, account classification, legal bridge, mức/tỷ lệ/thời hạn hoặc formula trọng yếu.
+
+7. NẾU PLAN THỰC SỰ TỰ MÂU THUẪN
+Chỉ dừng khi cùng Dxx/cùng Sxx bị Plan yêu cầu hai treatment không thể đồng thời đúng.
+Khi đó trả đúng:
+`CHƯA THỂ VIẾT — KẾ HOẠCH MÂU THUẪN VỚI QUYẾT ĐỊNH TRỌNG YẾU — CHẠY LẠI BƯỚC 3.`
+Không mở research mới và không yêu cầu `Làm rõ căn cứ khi cần` chỉ vì Bước 4 tự nghi ngờ lại căn cứ.
+
+YÊU CẦU BẢN CUỐI:
+- giữ CORE trọng yếu;
+- đúng phạm vi Sxx và Dxx đã khóa;
+- mọi material teaching claim phải có nguồn gốc từ Dxx/Plan;
+- ví dụ dễ hiểu, phép tính trọng yếu đúng;
+- khác biệt trọng yếu được tách đúng;
+- official form/table/template giữ fidelity;
+- không quảng bá mềm;
+- HTML canonical, không H1 trong body;
+- không đưa Sxx/Rxx/Cxx/Pxx/E##/Dxx, checkpoint, research state hay lời nhắc biên tập vào HTML công khai.
+
+ĐẦU RA:
+HÀNH ĐỘNG TIÊU ĐỀ: GIỮ | VIẾT LẠI | CẬP NHẬT
+TIÊU ĐỀ CUỐI: <tiêu đề>
+
+Sau đó một fenced code block chứa duy nhất Canonical HTML hoàn chỉnh.
+Không thêm báo cáo sau HTML.</pre></section>
+
+<section class="card"><h2>Bước 5 — Kiểm tra lần cuối trước khi đăng</h2><pre class="prompt" data-step="5">Bạn đang thực hiện BƯỚC 5 — KIỂM TRA LẦN CUỐI của KTD Editorial Content Renewal v1.6.0.
+
+NGÔN NGỮ ĐẦU RA:
+Toàn bộ báo cáo bằng tiếng Việt dễ hiểu. Không dùng heading tiếng Anh.
+
+MỤC TIÊU:
+Đây là CỔNG AN TOÀN ĐĂNG BÀI, không phải kỳ thi chứng minh mọi dòng 100%.
+Câu hỏi chính: `Bài có sai hoặc vượt phạm vi một quyết định chuyên môn trọng yếu đủ mức khiến người đọc áp dụng sai đáng kể hoặc làm giảm uy tín Kế Toán Diệu Tâm không?`
+
+BẮT BUỘC dùng Bảng Sxx + Bảng Dxx làm chuẩn. Không mở research mới.
+
+1. PASS 1 — KIỂM TRA COVERAGE TRƯỚC KHI KIỂM ĐÚNG/SAI
+Thực hiện nội bộ bốn kiểm tra sau:
+
+A. `PUBLIC SCOPE COVERAGE`
+So title + intro + scope box + heading + kết luận của Final với Bảng Sxx.
+Nếu Final công bố rộng hơn phạm vi đã được xác nhận/coverage, ghi blocker `SCOPE OVERCLAIM`.
+Chỉ xét phạm vi thật sự được Final công bố; không tưởng tượng thêm chế độ/đối tượng ngoài bài.
+
+B. `MATERIAL CLAIM TRACEABILITY`
+Quét các material teaching claim thực sự xuất hiện trong Final: formula, rule, rate/threshold/deadline, classification, treatment chính, procedure chính, exception/condition trọng yếu.
+Mỗi claim phải map được về một Dxx đủ căn cứ hoặc là official content được bảo toàn fidelity.
+Nếu một claim trọng yếu cụ thể không map được, ghi `UNMAPPED MATERIAL CLAIM`.
+Không biến wording/supporting detail thành material claim.
+
+C. `Dxx SCOPE COVERAGE`
+Với mỗi Dxx được Final sử dụng, kiểm `COVERAGE: ĐỦ` và kiểm mọi Sxx `TRONG PHẠM VI` có khả năng chi phối Dxx đã được phân loại rõ.
+Nếu còn một Sxx đã công bố và có khả năng chi phối nhưng chưa được reconcile, ghi `SCOPE COVERAGE GAP`.
+Không tạo gap từ một nguồn/chế độ chỉ là bối cảnh hoặc không chi phối Dxx.
+
+D. `CORE COVERAGE`
+Mỗi CORE chuẩn tắc/thực hành chính còn trong Final phải map được về Dxx. Nếu Plan/B2 đã bỏ sót một CORE material decision thì đây là blocker coverage, không được PASS chỉ vì câu văn nghe hợp lý.
+
+2. PASS 2 — NĂM KIỂM TRA QUYẾT ĐỊNH TRỌNG YẾU
+Chỉ sau Pass 1, với từng Dxx liên quan Final kiểm:
+A. PHẠM VI/HIỆU LỰC: treatment đúng đối tượng, fact pattern, thời kỳ, Sxx đã khóa chưa?
+B. KHÁC BIỆT GIỮA CÁC PHẠM VI: nếu `PHẢI TÁCH`, Final có universalize một nhánh không?
+C. KẾT LUẬN CHÍNH: formula/math/rate/threshold/deadline/classification/account/treatment chính có đúng Dxx không?
+D. ĐIỀU KIỆN/NGOẠI LỆ: nếu `PHẢI KÈM...`, Final có bỏ phần đủ quan trọng để người đọc dễ áp sai không?
+E. NHẤT QUÁN XUYÊN BÀI: cùng Dxx có nhất quán và đúng scope giữa intro/explanation/formula/example/warning/table/summary không?
+
+3. ĐIỀU KIỆN ĐỂ ĐƯỢC `ĐẠT`
+Chỉ được trả `ĐẠT` hoặc `ĐẠT — CÓ GỢI Ý NHỎ` khi đồng thời:
+- không có `SCOPE OVERCLAIM`;
+- không có `UNMAPPED MATERIAL CLAIM`;
+- không có `SCOPE COVERAGE GAP`;
+- CORE material decisions đều có traceability;
+- mọi Dxx được dùng đều pass 5 kiểm tra trọng yếu;
+- không có mâu thuẫn xuyên bề mặt trọng yếu.
+
+4. KHÔNG BLOCK BẰNG SUY ĐOÁN
+Không được block bằng “có thể còn chế độ khác”, “có lẽ còn ngoại lệ”, “có thể viết chính xác hơn”. Blocker phải chỉ ra claim/Sxx/Dxx cụ thể đang có trong bài hoặc hồ sơ + ảnh hưởng trọng yếu.
+Không ép tách khi Dxx đã xác nhận `DÙNG CHUNG`.
+
+5. KHÔNG CHẶN ĐĂNG CHỈ VÌ
+- 112 hay 331 trong ví dụ phụ khi bài không dạy trạng thái thanh toán;
+- tài khoản đối ứng phụ/route phụ có thể viết rõ hơn;
+- supporting detail được gộp/rút gọn mà bài học chính vẫn đủ;
+- emphasis/wording/polish nhỏ;
+- tài nguyên cần migrate nhưng nội dung vẫn đúng;
+- official form/table/template được giữ gần nguyên văn để bảo toàn fidelity.
+
+6. PHÂN LUỒNG SỬA — KHÔNG TẠO VÒNG LẶP
+- `LỖI SO VỚI Dxx ĐÃ CÓ`, `CROSS-SURFACE CONFLICT` hoặc `SCOPE OVERCLAIM` có thể sửa xác định từ evidence hiện có → đưa vào Bước 6.
+- `UNMAPPED MATERIAL CLAIM` nếu claim là SUPPORTING và có thể bỏ/generalize mà không làm mất CORE → đưa vào Bước 6, không cần research.
+- Nếu blocker cần treatment mới hoặc cần reconcile một Sxx trọng yếu mà hồ sơ chưa đủ: nếu `Làm rõ căn cứ khi cần` CHƯA dùng và đây KHÔNG phải QA sau Bước 6 → dùng nhánh đó MỘT LẦN; sau khi đủ đi THẲNG Bước 6, không quay lại Bước 2→3→4.
+- Nếu nhánh đã dùng hoặc đây là QA cuối sau Bước 6 → `CẦN BIÊN TẬP CHUYÊN MÔN THỦ CÔNG`.
+
+7. GÓI SỬA THEO CỤM
+Mỗi blocker sửa được phải ghi:
+- loại blocker;
+- Sxx/Dxx liên quan;
+- treatment/scope đúng theo evidence;
+- các bề mặt phải rà cùng lượt: title/intro/scope statement/explanation/formula/example/warning-note/table/summary-conclusion;
+- có được phép thu hẹp phạm vi công khai không, và nếu có thì phải sửa đồng bộ những bề mặt nào.
+Không chia cùng một decision thành nhiều vòng sửa.
+
+8. QA SAU BƯỚC 6
+Đây là lần QA tự động cuối.
+Không yêu cầu Bước 6 lần hai. Không yêu cầu làm rõ căn cứ lần mới. Nếu còn blocker trọng yếu → `CẦN BIÊN TẬP CHUYÊN MÔN THỦ CÔNG`.
+
+ĐẦU RA NGẮN GỌN:
+# BÁO CÁO KIỂM TRA CUỐI
+
+## KIỂM TRA COVERAGE
+- `PHẠM VI CÔNG KHAI: ĐỦ | CÓ LỖI`
+- `MATERIAL CLAIM TRACEABILITY: ĐỦ | CÓ LỖI`
+- `Dxx SCOPE COVERAGE: ĐỦ | CÓ LỖI`
+- nếu có lỗi: chỉ liệt kê Sxx/Dxx/claim cụ thể; không in lại toàn bộ bảng đã pass.
+
+## ĐỐI CHIẾU QUYẾT ĐỊNH TRỌNG YẾU
+- nếu tất cả Dxx ổn: `TẤT CẢ QUYẾT ĐỊNH TRỌNG YẾU ĐƯỢC KIỂM TRA ĐỀU PHÙ HỢP.`
+- nếu có lỗi: chỉ liệt kê Dxx lỗi + loại lỗi + bề mặt ảnh hưởng.
+
+## LỖI CHẶN ĐĂNG
+- liệt kê ngắn, hoặc `KHÔNG CÓ`.
+
+## GỢI Ý KHÔNG CHẶN ĐĂNG
+- tối đa vài mục thật sự hữu ích, hoặc `KHÔNG CÓ`.
+
+## VIỆC CẦN LÀM SAU
+- chỉ việc vận hành không ảnh hưởng publish safety, hoặc `KHÔNG CÓ`.
+
+Nếu có blocker sửa được từ căn cứ đã có và Bước 6 chưa dùng:
+## CÁC LỖI CÓ THỂ SỬA MỘT LẦN Ở BƯỚC 6
+- mỗi mục là một cụm scope+decision, kèm các bề mặt cần reconcile.
+
+KẾT QUẢ CUỐI phải là đúng MỘT trong các dòng:
+KẾT QUẢ CUỐI: ĐẠT
+KẾT QUẢ CUỐI: ĐẠT — CÓ GỢI Ý NHỎ
+KẾT QUẢ CUỐI: CHƯA ĐẠT — SỬA MỘT LẦN Ở BƯỚC 6
+KẾT QUẢ CUỐI: CẦN LÀM RÕ CĂN CỨ
+KẾT QUẢ CUỐI: CẦN BIÊN TẬP CHUYÊN MÔN THỦ CÔNG
+
+Không xuất HTML sửa trong Bước 5.</pre></section>
+
+<section class="card"><h2>Bước 6 — Sửa một lần theo cụm phạm vi + quyết định</h2><pre class="prompt" data-step="6">Bạn đang thực hiện BƯỚC 6 — SỬA MỘT LẦN của KTD Editorial Content Renewal v1.6.0.
+
+NGÔN NGỮ ĐẦU RA: tiếng Việt rõ ràng.
+
+Bước 6 được chạy khi có MỘT trong hai đầu vào hợp lệ:
+1. Bước 5 ghi `KẾT QUẢ CUỐI: CHƯA ĐẠT — SỬA MỘT LẦN Ở BƯỚC 6`; hoặc
+2. Bước 5 yêu cầu `CẦN LÀM RÕ CĂN CỨ`, nhánh `Làm rõ căn cứ khi cần` vừa được dùng sau Bước 5 và trả `ĐỦ CĂN CỨ ĐỂ SỬA` cùng gói căn cứ bổ sung.
+
+MỖI BÀI CHỈ ĐƯỢC CHẠY BƯỚC 6 MỘT LẦN.
+Nếu hồ sơ cho thấy Bước 6 đã dùng, trả `CẦN BIÊN TẬP CHUYÊN MÔN THỦ CÔNG` rồi dừng.
+
+MỤC TIÊU:
+Sửa blocker theo CỤM PHẠM VI + QUYẾT ĐỊNH, không sửa một dòng riêng lẻ rồi để treatment hoặc lời hứa phạm vi sai còn sót nơi khác.
+
+1. NGUỒN SỬA
+Chỉ dùng:
+- Bảng Sxx + Dxx đã đủ căn cứ;
+- `CÁC LỖI CÓ THỂ SỬA MỘT LẦN Ở BƯỚC 6`;
+- gói `BỔ SUNG CĂN CỨ CHO SỬA MỘT LẦN` nếu nhánh làm rõ được gọi sau Bước 5;
+- source/Audit/Plan đã có khi cần đối chiếu coverage.
+Không mở research mới.
+
+2. SỬA THEO CỤM — BẮT BUỘC
+Với mỗi blocker:
+- xác định Sxx + Dxx/treatment đúng;
+- rà tất cả bề mặt có thể lặp cùng scope/decision: title, intro, scope statement, explanation, formula, example, warning/note, bút toán liên quan, table, summary/conclusion;
+- sửa tất cả bề mặt bị ảnh hưởng trong CÙNG MỘT LẦN;
+- sau sửa, cùng Dxx phải nhất quán và không có bề mặt nào hứa rộng hơn coverage.
+
+3. XỬ LÝ THEO LOẠI BLOCKER
+- `LỖI SO VỚI Dxx` → sửa đúng treatment đã khóa trên mọi bề mặt.
+- `CROSS-SURFACE CONFLICT` → đồng bộ tất cả nơi lặp cùng Dxx.
+- `SCOPE OVERCLAIM` → chỉ thu hẹp title/intro/scope statement nếu Bước 5 xác nhận đó là sửa xác định, không làm mất CORE và evidence hiện có hỗ trợ phạm vi hẹp; nếu không → thủ công.
+- `UNMAPPED MATERIAL CLAIM` → nếu gói QA cho phép bỏ/generalize vì không phải CORE, bỏ/generalize; nếu claim cần treatment mới thì chỉ sửa khi gói bổ sung sau làm rõ đã cung cấp Dxx + coverage đủ.
+- `SCOPE COVERAGE GAP` → chỉ sửa khi gói bổ sung đã reconcile đủ Sxx liên quan; không tự đoán.
+
+4. TÔN TRỌNG LOẠI QUAN HỆ
+- `PHẢI TÁCH` → không để lại câu/formula/bảng nào universalize treatment;
+- `PHẢI KÈM ĐIỀU KIỆN/NGOẠI LỆ` → điều kiện/ngoại lệ trọng yếu phải còn ở vị trí cần thiết;
+- `DÙNG CHUNG` → không tạo khác biệt giả;
+- `CÓ THỂ VIẾT TRUNG TÍNH` → ưu tiên wording an toàn thay vì hard-code detail phụ.
+
+5. KHÔNG ĐƯỢC BỊA ĐỂ KHỚP
+Không tự tạo rule, route, source balance, carrying amount, trạng thái thanh toán, phạm vi, mức/tỷ lệ/thời hạn, account classification hoặc legal bridge trọng yếu chỉ để reconcile.
+Nếu blocker cần căn cứ trọng yếu mới mà không có trong Dxx/gói bổ sung → không sửa một phần; trả `CẦN BIÊN TẬP CHUYÊN MÔN THỦ CÔNG` rồi dừng.
+
+6. GIỮ NGUYÊN PHẦN KHÔNG LIÊN QUAN
+Không mở rộng bài, không tái cấu trúc toàn bộ, không đổi official content chỉ để tăng novelty.
+
+7. SELF-CHECK TRƯỚC KHI XUẤT
+Không research lại. Chỉ kiểm deterministic:
+- mọi blocker trong gói sửa đã được xử lý trên đủ bề mặt;
+- title/intro/scope statement không vượt Sxx;
+- material claim đã sửa map đúng Dxx;
+- không còn treatment cũ của cùng cụm ở table/example/summary.
+
+ĐẦU RA KHI SỬA ĐƯỢC:
+TIÊU ĐỀ CUỐI: <tiêu đề>
+
+Một fenced code block chứa duy nhất HTML hoàn chỉnh đã sửa.
+Sau đó ghi:
+`BƯỚC 6 ĐÃ DÙNG: CÓ — BẮT BUỘC CHẠY BƯỚC 5 LẦN CUỐI.`
+
+Sau Bước 5 lần cuối:
+- nếu ĐẠT/ĐẠT — CÓ GỢI Ý NHỎ → kết thúc;
+- nếu vẫn còn blocker trọng yếu → CẦN BIÊN TẬP CHUYÊN MÔN THỦ CÔNG;
+- không lặp Bước 6 và không mở thêm vòng làm rõ.</pre></section>
+
+</main>
+</body>
+</html>
