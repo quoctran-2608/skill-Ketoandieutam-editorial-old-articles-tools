@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bộ lệnh Chặng 2 v1.7 — Chính thức</title>
+<style>
+:root{--bg:#f3f6f5;--surface:#fff;--text:#17221d;--muted:#66736c;--border:#dce5df;--green:#176b4d;--amber:#b45309;--violet:#7c3aed;--teal:#0f766e}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.58}.page{width:min(1000px,calc(100% - 28px));margin:auto;padding:28px 0 64px}header,.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px 22px;margin-top:14px}header{margin-top:0;background:linear-gradient(135deg,#123f35,#176b4d);color:#fff;border:0}h1{margin:0;font-size:30px}header p{margin:8px 0 0;color:#def3e8}.status{display:inline-flex;margin-top:14px;padding:6px 10px;border-radius:999px;background:rgba(0,0,0,.18);font-size:12px}.card h2{margin:0 0 5px;font-size:19px}.card p{margin:0;color:var(--muted);font-size:13px}.prompt{margin-top:12px;white-space:pre-wrap;overflow-wrap:anywhere;background:#f7f9f8;border:1px solid #e3e9e5;border-radius:10px;padding:14px;font:12.5px/1.58 Consolas,"Courier New",monospace;max-height:520px;overflow:auto}.error{background:#fff7ed;border-color:#efd6b5;color:#7a4b0b}.footer{margin-top:18px;text-align:center;color:#89958e;font-size:12px}@media(max-width:700px){.page{width:min(100% - 16px,1000px);padding-top:12px}header,.card{padding:17px 15px}}
+</style>
+</head>
+<body>
+<main class="page">
+<header>
+<h1>Editorial Content Renewal v1.7 — Bộ lệnh tích hợp</h1>
+<p>Bản chính thức v1.7 — ghép đúng 6 bước đã qua QA theo manifest, không nhân bản prompt text để tránh drift.</p>
+<div id="status" class="status">Đang tải manifest và 6 bước...</div>
+</header>
+<section id="promptList" aria-live="polite"></section>
+<div class="footer">MATERIAL_ACCURACY_AND_PRESERVATION_V4 — OFFICIAL — runtime chính thức.</div>
+</main>
+<script>
+(async()=>{
+const status=document.querySelector('#status'),list=document.querySelector('#promptList');
+const labels={1:['Bước 1 — Kiểm tra bài hiện tại','Khóa phạm vi, rủi ro material và phần giá trị cần giữ.'],2:['Bước 2 — Kiểm chứng nội dung trọng yếu','Khóa Sxx/Dxx có giới hạn; không kiểm toán mọi chi tiết.'],3:['Bước 3 — Lập kế hoạch làm mới','Lập Scope + Decision + Preservation + Example/Presentation plan.'],4:['Bước 4 — Viết lại bài','Correctness → Preservation → Refresh Example → Light Rephrase → Remove Promotion.'],5:['Bước 5 — Kiểm tra lần cuối','Hai pass: Coverage + Preservation → Material Accuracy.'],6:['Bước 6 — Sửa một lần','Minimal Repair theo Scope + Decision + Preservation cluster.']};
+function fail(message){status.textContent='Không tải được bộ lệnh';const box=document.createElement('section');box.className='card error';box.textContent=message;list.replaceChildren(box);}
+try{
+ const mr=await fetch('./content-renewal-manifest.json',{cache:'no-store'});if(!mr.ok)throw new Error('Không tải được manifest Phase 6.');
+ const manifest=await mr.json();if(manifest.canonicalPromptCount!==6)throw new Error('Manifest không khai báo đúng 6 canonical prompts.');
+ const prompts=new Map();
+ for(const source of manifest.sources){
+  const r=await fetch(source.path,{cache:'no-store'});if(!r.ok)throw new Error(`Không tải được ${source.path}`);
+  const doc=new DOMParser().parseFromString(await r.text(),'text/html');
+  for(const el of doc.querySelectorAll('pre.prompt[data-step]')){
+   const n=Number(el.dataset.step);if(!source.steps.includes(n))continue;if(prompts.has(n))throw new Error(`Trùng prompt Bước ${n}.`);prompts.set(n,el.textContent.trim());
+  }
+ }
+ if(prompts.size!==6||[1,2,3,4,5,6].some(n=>!prompts.has(n)))throw new Error('Không ghép đủ Bước 1–6.');
+ const frag=document.createDocumentFragment();
+ for(let n=1;n<=6;n++){
+  const card=document.createElement('section');card.className='card';card.innerHTML=`<h2>${labels[n][0]}</h2><p>${labels[n][1]}</p><pre class="prompt" data-step="${n}"></pre>`;card.querySelector('pre').textContent=prompts.get(n);frag.appendChild(card);
+ }
+ list.replaceChildren(frag);status.textContent='Bộ lệnh v1.7.0 chính thức đã sẵn sàng — đủ 6 bước';
+}catch(error){fail(error?.message||'Lỗi không xác định.');}
+})();
+</script>
+</body>
+</html>

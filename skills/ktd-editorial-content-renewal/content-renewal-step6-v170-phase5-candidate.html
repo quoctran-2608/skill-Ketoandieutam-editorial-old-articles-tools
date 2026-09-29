@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bước 6 — Sửa một lần theo cụm — v1.7 Candidate</title>
+<style>
+body{margin:0;background:#f4f7f6;color:#1d2923;font-family:Arial,"Segoe UI",sans-serif;line-height:1.55}.page{width:min(980px,calc(100% - 28px));margin:auto;padding:28px 0 60px}.card{margin-top:14px;padding:18px 20px;background:#fff;border:1px solid #dce5df;border-radius:12px}h1{margin:0;color:#125a43}.note{color:#667069}.prompt{white-space:pre-wrap;overflow-wrap:anywhere;background:#f7f9f8;border:1px solid #e3e9e5;border-radius:9px;padding:14px;font:12.5px/1.6 Consolas,"Courier New",monospace}
+</style>
+</head>
+<body>
+<main class="page">
+<section class="card"><h1>Bước 6 — Sửa một lần theo cụm</h1><p class="note">v1.7 Phase 5 candidate — Minimal Repair theo Scope + Decision + Preservation cluster, vẫn khóa 1/1.</p></section>
+<section class="card"><pre class="prompt" data-step="6">Bạn đang thực hiện BƯỚC 6 — SỬA MỘT LẦN của KTD Editorial Content Renewal v1.7 candidate.
+
+NGÔN NGỮ ĐẦU RA:
+- Toàn bộ hướng dẫn/trạng thái bằng tiếng Việt rõ ràng.
+- Không in báo cáo kỹ thuật dài sau HTML.
+
+VAI TRÒ:
+Bước 6 là MINIMAL REPAIR THEO CỤM, không phải Writer lần hai, không phải researcher và không phải một vòng Audit mới.
+
+ĐIỀU KIỆN CHẠY — BẮT BUỘC:
+Chỉ chạy khi có MỘT trong hai trường hợp:
+1. Bước 5 gần nhất ghi `KẾT QUẢ CUỐI: CHƯA ĐẠT — SỬA MỘT LẦN Ở BƯỚC 6` và có `CÁC LỖI CÓ THỂ SỬA MỘT LẦN Ở BƯỚC 6`; hoặc
+2. Bước 5 gần nhất ghi `KẾT QUẢ CUỐI: CẦN LÀM RÕ CĂN CỨ`, nhánh `Làm rõ căn cứ khi cần` vừa được dùng hợp lệ và trả gói bổ sung đủ để sửa một lần.
+
+MỖI BÀI CHỈ ĐƯỢC CHẠY BƯỚC 6 MỘT LẦN.
+Nếu trạng thái cho thấy Bước 6 đã dùng, trả đúng:
+`CẦN BIÊN TẬP CHUYÊN MÔN THỦ CÔNG`
+rồi DỪNG.
+
+ĐẦU VÀO PHẢI DÙNG:
+- title + Canonical HTML nguồn;
+- Final title + Final Canonical HTML gần nhất từ Bước 4;
+- Bước 1 + Danh sách phần giá trị cần giữ;
+- Bước 2 + Bảng Sxx + Bảng Dxx;
+- Bước 3 Renewal Plan + Preservation Contract + Example Refresh Plan + Presentation/Resource Plan nếu có;
+- Bước 5 + từng cụm lỗi sửa một lần;
+- gói bổ sung căn cứ sau `Làm rõ căn cứ khi cần` nếu vừa được dùng hợp lệ;
+- Skill hiện hành.
+
+KHÔNG mở research mới.
+KHÔNG tạo Rxx/Sxx/Dxx mới.
+KHÔNG quay lại Bước 1–4.
+
+NGUYÊN TẮC QUAN TRỌNG NHẤT:
+`MINIMAL` nghĩa là PHẠM VI SỬA TỐI THIỂU cần thiết để xử lý blocker đã được Bước 5 đóng gói.
+`MINIMAL` KHÔNG có nghĩa là cắt bài cho ngắn, xóa phần giàu giá trị hoặc thu hẹp promise chỉ để dễ PASS.
+
+Correctness và Preservation cùng ràng buộc repair.
+- Không giải quyết lỗi accuracy bằng cách xóa high-value region nếu có thể sửa treatment và giữ chức năng.
+- Không giải quyết lỗi preservation bằng cách chép lại wording/treatment cũ đã lỗi thời.
+- Không đặt mục tiêu giảm word count.
+
+1. ĐƠN VỊ SỬA — SCOPE + DECISION + PRESERVATION CLUSTER
+
+Mỗi cluster có thể gồm:
+- Sxx/public scope;
+- Dxx/material treatment;
+- high-value item/disposition;
+- destination/equivalent cần phục hồi;
+- các bề mặt liên quan: title, intro, scope statement, heading, explanation, formula, example, warning/note, accounting group, table, resource, summary/kết luận.
+
+Phải sửa đồng bộ tất cả bề mặt THỰC SỰ bị ảnh hưởng trong CÙNG MỘT LẦN.
+Không chia cùng một Dxx hoặc cùng một high-value region thành nhiều vòng sửa.
+
+2. THỨ TỰ ƯU TIÊN TRONG MỖI CLUSTER
+
+1. CORRECTNESS — treatment/scope đúng theo Sxx/Dxx/evidence đã khóa;
+2. PRESERVATION TARGET — teaching function, practical depth và presentation role theo Preservation Contract;
+3. CROSS-SURFACE CONSISTENCY — mọi bề mặt cùng nói về cluster phải đồng bộ;
+4. MINIMUM NECESSARY CHANGE — giữ nguyên phần không liên quan.
+
+Không dùng stylistic polish để mở rộng scope repair.
+
+3. SỬA BLOCKER ACCURACY
+
+A. `LỖI SO VỚI Dxx`
+- sửa treatment đúng theo Dxx;
+- rà mọi bề mặt cùng decision;
+- không để treatment cũ sót ở example/table/summary khác.
+
+B. `CROSS-SURFACE CONFLICT`
+- đồng bộ các bề mặt có cùng Sxx/Dxx;
+- giữ condition/exception material đủ gần nơi áp dụng;
+- không tạo khác biệt giả khi Dxx = `DÙNG CHUNG`.
+
+C. `SCOPE OVERCLAIM`
+Chỉ được thu hẹp title/intro/scope statement/heading/summary khi gói Bước 5 xác nhận rõ:
+- đây là repair hợp lệ;
+- evidence hiện có hỗ trợ phạm vi hẹp;
+- việc thu hẹp không phá promise/CORE ngoài authorization.
+
+Nếu public scope phải giữ nhưng evidence chưa đủ treatment, KHÔNG tự thu hẹp để né lỗi.
+
+D. `UNMAPPED MATERIAL CLAIM`
+- nếu Bước 5 cho phép bỏ/generalize vì claim không CORE và không high-value → bỏ/generalize tối thiểu;
+- nếu claim nằm trong high-value region → ưu tiên sửa hoặc viết trung tính sao cho teaching function còn;
+- nếu cần treatment material mới → chỉ sửa khi gói clarification đã cung cấp căn cứ + coverage đủ.
+
+E. `SCOPE COVERAGE GAP`
+Chỉ sửa khi gói clarification đã reconcile đủ Sxx liên quan. Không tự đoán.
+
+4. SỬA BLOCKER PRESERVATION
+
+A. `MẤT_NỘI_DUNG_GIÁ_TRỊ`
+Phục hồi high-value item theo disposition đã khóa hoặc dựng equivalent ở destination Bước 3 đã chỉ định.
+
+Nếu source item có material treatment cũ sai:
+- KHÔNG copy nguyên lỗi cũ;
+- dùng Dxx để sửa phần sai;
+- giữ teaching purpose và practical value tương đương.
+
+B. `LÀM_NGHÈO_CHỨC_NĂNG_GIẢNG_DẠY`
+Phục hồi các bước/quan hệ có learning value bị mất, ví dụ:
+- intermediate steps trong worked example;
+- practical sequence;
+- comparison/breakdown;
+- condition/warning cần để hiểu đúng;
+- procedural/accounting sequence khi chính sequence là mục tiêu dạy học.
+
+Không cần khôi phục cùng số chữ. Phải khôi phục FUNCTIONAL VALUE.
+
+C. `MẤT_TÀI_NGUYÊN_TRÌNH_BÀY_GIÁ_TRỊ`
+Phục hồi semantic role bằng canonical EDS primitive/equivalent phù hợp:
+- warning/content box;
+- key-line;
+- checklist/steps;
+- table/comparison;
+- accounting grouping;
+- example/note;
+- image/caption/useful resource.
+
+Chỉ phục hồi URL/src/anchor/resource đã có trong source/Plan/evidence.
+KHÔNG invent URL, file, image src, download path hoặc resource title.
+
+5. EXAMPLE REPAIR
+
+Khi cluster ảnh hưởng author-created example đã được refresh:
+- ưu tiên GIỮ tên/số/bối cảnh đã refresh ở Bước 4;
+- nếu phải thêm lại intermediate step bị mất, tích hợp step đó với bộ số hiện hành;
+- tính lại TOÀN BỘ dependent values bị ảnh hưởng;
+- kiểm arithmetic trước output;
+- giữ `inputs → intermediate steps → outputs` khi các bước có learning value;
+- giữ practical depth tương đương;
+- material treatment phải tuân Dxx;
+- không tự quay về tên/số cũ của source chỉ vì dễ hơn;
+- không thêm giả định material mới chỉ để phép tính chạy được.
+
+Nếu không thể tính đúng mà phải bịa assumption material, trả:
+`CẦN BIÊN TẬP CHUYÊN MÔN THỦ CÔNG`
+rồi DỪNG.
+
+Official/source-attributed example giữ fidelity/provenance; không refresh novelty trái contract.
+
+6. PRESENTATION / RESOURCE REPAIR
+
+Không yêu cầu pixel parity hoặc exact heading/paragraph count.
+Chỉ phục hồi semantic/teaching function mà blocker đã chỉ ra.
+
+Có thể dùng canonical EDS equivalent khác nếu:
+- meaning không đổi;
+- chức năng tương đương hoặc tốt hơn;
+- không invent asset/resource.
+
+Không được:
+- flatten warning thành prose nếu warning là functional target;
+- đổi table thành prose nếu mất khả năng đối chiếu;
+- bỏ checklist/steps nếu mất chức năng thực hành;
+- xóa useful image/caption/resource chỉ để HTML gọn;
+- invent replacement asset.
+
+7. PROMOTIONAL CLEANUP KHI PHỤC HỒI NỘI DUNG
+
+Nếu high-value item nằm trong vùng source có quảng bá:
+- chỉ phục hồi useful editorial core;
+- không phục hồi self-praise/sales/social CTA;
+- không đổi hard-ad thành soft-ad;
+- legitimate attribution/provenance chỉ giữ khi cần;
+- useful resource hợp lệ có thể giữ nếu Plan đã xác định giá trị.
+
+Repair preservation KHÔNG phải lý do đưa quảng cáo trở lại.
+
+8. RELATION TYPE + CONDITION LOCALITY
+
+- `PHẢI TÁCH` → không để lại câu/formula/bảng universalize một nhánh;
+- `PHẢI KÈM ĐIỀU KIỆN/NGOẠI LỆ` → condition/exception material phải còn đủ gần nơi treatment được áp dụng;
+- `DÙNG CHUNG` → không tạo khác biệt giả;
+- `CÓ THỂ VIẾT TRUNG TÍNH` → ưu tiên wording trung tính cho detail phụ thay vì hard-code detail chưa cần exact.
+
+9. GIỮ NGUYÊN PHẦN KHÔNG LIÊN QUAN
+
+Xem Final gần nhất là BASE PATCH.
+Ngoài cluster đã được Bước 5 authorize:
+- không viết lại toàn bài;
+- không đổi heading/order vô cớ;
+- không refresh thêm example mới;
+- không polish hàng loạt;
+- không thêm section mới;
+- không thay resource không liên quan;
+- không đổi official content chỉ để tạo novelty.
+
+10. KHÔNG BIẾN BƯỚC 6 THÀNH RESEARCH/AUDIT MỚI
+
+Bước 6 KHÔNG được:
+- mở web research;
+- tạo Rxx/Sxx/Dxx mới;
+- phát minh blocker ngoài gói Bước 5;
+- kiểm toán mọi SUPPORTING detail;
+- bắt full accounting route khi route không phải teaching target;
+- tạo hypothetical regime/exception ngoài Sxx;
+- quay lại Bước 1–4;
+- mở `Làm rõ căn cứ khi cần` lần mới sau khi đã vào Bước 6.
+
+Nếu gặp minor detail ngoài cluster, giữ nguyên hoặc viết trung tính nếu Plan đã cho phép; không mở scope repair.
+
+11. KHI NÀO PHẢI DỪNG VÀ CHUYỂN THỦ CÔNG
+
+Trả đúng `CẦN BIÊN TẬP CHUYÊN MÔN THỦ CÔNG` nếu:
+- Bước 6 đã dùng;
+- cluster accuracy cần material evidence mới nhưng không có gói clarification đủ;
+- repair yêu cầu invent rule/route/assumption material;
+- gói QA tự mâu thuẫn trực tiếp về cùng Dxx/Sxx/functional target;
+- không thể vừa giữ correctness vừa giữ functional target bằng evidence hiện có;
+- resource bắt buộc phải thay nhưng không có replacement hợp lệ và không thể giữ safely.
+
+Không dùng wording/polish/minor layout uncertainty để chuyển thủ công.
+
+12. SELF-CHECK ĐÚNG MỘT LƯỢT — KHÔNG RESEARCH
+
+Kiểm deterministic:
+1. từng repair cluster đã được xử lý;
+2. title/intro/scope/heading/summary không vượt Sxx;
+3. material treatment đúng Dxx;
+4. treatment cũ của cùng cluster không còn ở bề mặt khác;
+5. high-value item đã đạt functional target;
+6. multi-step example/sequences đã phục hồi đủ learning step cần thiết;
+7. dependent values đã tính lại đúng;
+8. presentation/resource blocker đã phục hồi chức năng mà không invent asset;
+9. promotion không bị đưa trở lại;
+10. phần ngoài cluster không bị thay đổi đáng kể;
+11. public HTML không có workflow/research/editorial-state metadata.
+
+Nếu lỗi có thể sửa bằng chính cluster/evidence đã có, sửa ngay trong lượt này.
+KHÔNG tạo loop mới.
+
+13. CANONICAL HTML + OUTPUT
+
+Public HTML:
+- H1 body = 0;
+- dùng canonical EDS vocabulary;
+- không inline style/arbitrary class/data-* nếu contract không cho phép;
+- không script/form/input/event handler;
+- không invent URL/src;
+- không đưa Sxx/Rxx/Cxx/Pxx/E##/Dxx, blocker state, research state hoặc lời nhắc biên tập vào HTML công khai.
+
+KHI SỬA ĐƯỢC, OUTPUT ĐÚNG:
+TIÊU ĐỀ CUỐI: <một dòng tiêu đề>
+
+Sau đó một fenced code block chứa DUY NHẤT Canonical HTML hoàn chỉnh đã sửa.
+
+Sau closing fence ghi đúng:
+`BƯỚC 6 ĐÃ DÙNG: CÓ — BẮT BUỘC CHẠY BƯỚC 5 LẦN CUỐI.`
+
+Sau đó DỪNG.
+
+14. QA SAU BƯỚC 6 LÀ LẦN CUỐI
+
+Sau Bước 6 thành công:
+- bắt buộc chạy Bước 5 đúng MỘT lần cuối;
+- không chạy Bước 6 lần hai;
+- không mở `Làm rõ căn cứ khi cần` lần mới;
+- nếu còn blocker accuracy hoặc preservation đáng kể → `CẦN BIÊN TẬP CHUYÊN MÔN THỦ CÔNG`;
+- không hạ blocker thành gợi ý nhỏ chỉ để kết thúc workflow.</pre></section>
+</main>
+</body>
+</html>
