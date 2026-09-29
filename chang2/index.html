@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CHẶNG 2 — Kế Toán Diệu Tâm Editorial Tools</title>
+<meta name="description" content="Điểm vào Chặng 2 của bộ công cụ xử lý bài viết cũ Kế Toán Diệu Tâm.">
+<style>
+html,body{margin:0;min-height:100%;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f3f6f5;color:#17221d}
+.loading{max-width:720px;margin:12vh auto;padding:24px}
+.error{border:1px solid #fecaca;border-radius:12px;background:#fef2f2;color:#991b1b}
+</style>
+</head>
+<body>
+<div id="status" class="loading">Đang mở Chặng 2…</div>
+<script>
+(async()=>{
+  const source='../skills/ktd-editorial-content-renewal/content-renewal-assistant.html';
+  const baseHref='../skills/ktd-editorial-content-renewal/';
+  try{
+    const response=await fetch(source,{cache:'no-store'});
+    if(!response.ok) throw new Error('HTTP '+response.status);
+    let html=await response.text();
+    html=html.replaceAll('../ktd-editorial-html-transform-compact/editorial-transform-assistant.html','../../chang1/');
+    const base='<base href="'+baseHref+'">';
+    if(/<head\b[^>]*>/i.test(html)){
+      html=html.replace(/<head\b[^>]*>/i,match=>match+'\n'+base);
+    }else{
+      html=base+html;
+    }
+    document.open();
+    document.write(html);
+    document.close();
+  }catch(error){
+    const status=document.getElementById('status');
+    status.className='loading error';
+    status.textContent='Không tải được Chặng 2 từ bộ skill trong repo này. Hãy tải lại trang.';
+    console.error(error);
+  }
+})();
+</script>
+</body>
+</html>
